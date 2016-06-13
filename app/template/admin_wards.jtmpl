@@ -21,6 +21,32 @@
 	]]>
 </script>
 
+<script type="text/x-jqote-template" id="template-records-pagination">
+	<![CDATA[
+	
+	
+	
+	
+	<nav class="text-center">
+		<ul class="pagination pagination-sm" style="margin:0;">
+			<li data-page="1"
+			<% if ('1'==this.current) { %>class="disabled"<% } %>>
+			<a href="#">«</a>        </li>        <% for(var i in this.pages) { %>
+			<li data-page="<%= this.pages[i].p %>" class="<% if (this.current==this.pages[i].p) { %>active<% } %>">
+				<a href="#"><%= this.pages[i].p %></a></li>
+			<% } %>
+			<li data-page="<%= this.last %>"
+			<% if (this.last==this.current) { %>class="disabled"<% } %>> <a href="#">»</a>        </li>
+		</ul>
+	</nav>
+	
+	
+	
+	
+	
+	
+	]]>
+</script>
 <script type="text/x-jqote-template" id="template-details">
 	<![CDATA[
 	<h3><% if(this.details.ID==""){ %>Add Record<% } else { %>Edit Record<% } %></h3>
