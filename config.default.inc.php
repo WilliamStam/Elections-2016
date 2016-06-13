@@ -7,7 +7,7 @@ $cfg['DB']['database'] = "elections-2016";
 $cfg['git'] = array(
 	'username'=>"",
 	"password"=>"",
-	"path"=>"github.com/Impreshin/Elections-2016.git",
+	"path"=>"github.com/WilliamStam/Elections-2016",
 	"branch"=>"master"
 );
 
