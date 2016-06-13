@@ -8,9 +8,7 @@ class ward_map extends _ {
 		parent::__construct();
 		
 		$this->user = $this->f3->get("user");
-		if ($this->user['ID']==""){
-			$this->f3->error(403);
-		}
+		
 	}
 	function data() {
 	
