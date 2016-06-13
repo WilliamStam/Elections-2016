@@ -39,8 +39,9 @@ class lookup extends _ {
 			$response = $n->request($url);
 			$return = ($response['body']);
 			$r = json_decode($return);
+			$r = json_decode(json_encode($r), true);
 			//test_array($r); 
-			if (isset($r->code)&&$r->code==404){
+			if (isset($r['code'])&&$r['code']==404){
 				$data['code'] = 404;
 			} else {
 				$data['code'] = 200;
@@ -55,9 +56,10 @@ class lookup extends _ {
 			$response = $n->request($url);
 			$return = ($response['body']);
 			$r = json_decode($return);
+			$r = json_decode(json_encode($r), true);
 			//	test_array($return); 
 			
-				if ($r && $r->code !='404'){
+				if ($r && $r['code'] !='404'){
 					$values = array(
 							"wardID"=>$key,
 							"data"=>($return)
@@ -78,7 +80,35 @@ class lookup extends _ {
 		//test_array($data);
 		return $GLOBALS["output"]['data'] = $data;
 	}
-	
+	function point($key){
+		if ($key) {
+		} else {
+			$key = $this->f3->get("PARAMS['key']");
+		}
+		//http://mapit.code4sa.org/point/4326/29.910106658935547,-23.042962580313343
+		$url = "http://mapit.code4sa.org/point/4326/$key";
+		$n = new \Web();
+		$response = $n->request($url);
+		$return = ($response['body']);
+		$r = json_decode($return);
+		$r = json_decode(json_encode($r), true);
+		//test_array($r); 
+		$data  = array();
+		
+		if (count($r)){
+			$data['code']=200;
+		} else {
+			$data['code']=404;
+		}
+		
+		
+		
+		foreach ($r as $item){
+			$data[$item['type_name']] = $item;
+		}
+		
+		return $GLOBALS["output"]['data'] = $data;
+	}
 	
 
 
