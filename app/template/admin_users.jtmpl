@@ -1,0 +1,87 @@
+<script type="text/x-jqote-template" id="template-records">
+	<![CDATA[
+	
+	<% for (var i in this.records){ %>
+	<tr class="record <% if(this.details.ID==this.records[i].ID){ %>active<% } %>" data-id="<%= this.records[i].ID %>">
+		<td>
+			<%= this.records[i].fullname %>
+		</td>
+		<td class="font-small" style="width:120px;padding-top:11px;">
+			<%= this.records[i].lastActivity||'' %>
+		</td>
+	</tr>
+	<% } %>
+	<% if (this.records.length==0){ %>
+	<tr>
+		<td>
+			<div style="padding:30px; text-align: center;" class="alert alert-warning">No Records Found</div>
+		</td>
+	</tr>
+	
+	<% } %>
+	
+	]]>
+</script>
+
+<script type="text/x-jqote-template" id="template-details">
+	<![CDATA[
+	<h3><% if(this.details.ID==""){ %>Add Record<% } else { %>Edit Record<% } %></h3>
+	<form id="details-form" class="form-horizontal">
+		
+		<div class="form-group has-feedback">
+			<label for="fullname" class="col-sm-2 control-label">Full Name:</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="fullname" name="fullname" placeholder="Full Name" value="<%= this.details.fullname||'' %>">
+			</div>
+		</div>
+		<input type="text" name="username" id="username" value="" style="display:none;" />
+		<input type="password" name="password_fake" id="password_fake" value="" style="display:none;" />
+		<div class="form-group has-feedback">
+			<label for="username_fld" class="col-sm-2 control-label">Email:</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="username_fld" name="username_fld" placeholder="Username/Email" value="<%= this.details.username||'' %>">
+			</div>
+		</div>
+		
+		<div class="form-group has-feedback">
+			<label for="password_fld" class="col-sm-2 control-label">Password:</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="password" id="password_fld" name="password_fld" placeholder="Password" value="" autocomplete="false" >
+				<div class="help-block">Leave blank to keep old password</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<nav class="form-btn-bar">
+			
+				
+					<% if(this.details.ID!=""){ %>
+					<button class="btn btn-danger delete-btn" type="button"><i class="fa fa-trash"></i></button>
+					<% } %>
+					<div class="pull-right">
+						<button class="btn btn-link cancel-btn" type="button">Cancel</button>
+						<button class="btn btn-primary" type="submit" style="width:150px;">Save</button>
+					</div>
+				
+				
+			
+		
+		</nav>
+	</form>
+	]]>
+</script>
+<script type="text/x-jqote-template" id="template-records-no-records">
+	<![CDATA[
+	<tr>
+		<td colspan="2">
+			<div style="padding:30px; text-align: center;" class="alert alert-warning">No Records Found</div>
+		</td>
+	
+	</tr>
+	
+	]]>
+</script>

@@ -1,0 +1,74 @@
+<script type="text/x-jqote-template" id="template-records">
+	<![CDATA[
+	
+	<% for (var i in this.records){ %>
+	<tr class="record <% if(this.details.ID==this.records[i].ID){ %>active<% } %>" data-id="<%= this.records[i].ID %>">
+		<td>
+			<%= this.records[i].wardID %>
+		</td>
+		
+	</tr>
+	<% } %>
+	<% if (this.records.length==0){ %>
+	<tr>
+		<td>
+			<div style="padding:30px; text-align: center;" class="alert alert-warning">No Records Found</div>
+		</td>
+	</tr>
+	
+	<% } %>
+	
+	]]>
+</script>
+
+<script type="text/x-jqote-template" id="template-details">
+	<![CDATA[
+	<h3><% if(this.details.ID==""){ %>Add Record<% } else { %>Edit Record<% } %></h3>
+	<form id="details-form" class="form-horizontal">
+		
+		<div class="form-group has-feedback">
+			<label for="fullname" class="col-sm-2 control-label">Ward ID:</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="wardID" name="wardID" placeholder="Ward ID ie: 93404020" value="<%= this.details.wardID||'' %>">
+			</div>
+		</div>
+		
+		
+		<div style="margin-top:30px;">
+			<div class="box effect8" style="max-width:500px;margin:auto;">
+				<div id="map-area"><div id="leaflet"></div></div>
+			</div>
+		</div>
+		
+		
+		
+		
+		<nav class="form-btn-bar">
+			
+				
+					<% if(this.details.ID!=""){ %>
+					<button class="btn btn-danger delete-btn" type="button"><i class="fa fa-trash"></i></button>
+					<% } %>
+					<div class="pull-right">
+						<button class="btn btn-link cancel-btn" type="button">Cancel</button>
+						<button class="btn btn-primary" type="submit" style="width:150px;">Save</button>
+					</div>
+				
+				
+			
+		
+		</nav>
+	</form>
+	]]>
+</script>
+<script type="text/x-jqote-template" id="template-records-no-records">
+	<![CDATA[
+	<tr>
+		<td >
+			<div style="padding:30px; text-align: center;" class="alert alert-warning">No Records Found</div>
+		</td>
+	
+	</tr>
+	
+	]]>
+</script>

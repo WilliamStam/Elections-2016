@@ -1,0 +1,59 @@
+<div class="header header-sticky" id="main-nav" >
+	<div class="container">
+		<!-- Logo -->
+		
+		<!-- End Logo -->
+		
+		<!-- Topbar -->
+		<div class="topbar">
+			<ul class="loginbar pull-right">
+				<li><a href="/contact">Contact</a></li>
+				<li class="topbar-devider"></li>
+				<li><a href="/about">About</a></li>
+			
+			</ul>
+		</div>
+		
+		<!-- End Topbar -->
+		
+		
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="fa fa-bars"></span>
+			</button>
+			<a class="navbar-brand " href="/" >Elections 2016</a>
+		</div>
+		
+		
+		
+		<div class="clearfix"></div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse  navbar-right" id="bs-example-navbar-collapse-1" style="margin-bottom:0;">
+			
+			
+			<ul class="nav navbar-nav navbar-right">
+				<li {% if page['section']=='home' %}class="active"{% endif %}><a href="/">Home</a></li>
+				
+				
+				<li {% if page['section']=='my' %}class="active"{% endif %}><a href="/my">My Ward</a></li>
+				<li {% if page['section']=='ward_map' %}class="active"{% endif %}><a href="/map">Ward Map</a></li>
+				
+				
+				{% if _user['ID'] %}
+					
+					<li class="dropdown {% if page['section']=='admin' %}active{% endif %}">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
+						<ul class="dropdown-menu">
+							<li class="{% if page['section']=='admin' and page['sub_section']=='home' %}active{% endif %}"><a href="/admin">Administration</a></li>
+							{% include "_admin_li_links.twig" %}
+							<li role="separator" class="divider"></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+					</li>
+					
+				{% endif %}
+			</ul>
+		</div><!--/end container-->
+	</div><!--/navbar-collapse-->
+</div>

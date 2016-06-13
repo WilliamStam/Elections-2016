@@ -1,0 +1,12 @@
+#map-area,
+#map-area1 {
+  position: relative;
+  margin: 0;
+}
+#leaflet,
+#leaflet1 {
+  height: 400px;
+}
+.leaflet-container {
+  background-color: rgba(255, 255, 255, 0);
+}

@@ -1,0 +1,76 @@
+<script type="text/x-jqote-template" id="template-records">
+	<![CDATA[
+	
+	<% for (var i in this.records){ %>
+	<tr class="record <% if(this.details.ID==this.records[i].ID){ %>active<% } %>" data-id="<%= this.records[i].ID %>">
+		<td>
+			<%= this.records[i].party %>
+		</td>
+	
+	</tr>
+	<% } %>
+	<% if (this.records.length==0){ %>
+	<tr>
+		<td>
+			<div style="padding:30px; text-align: center;" class="alert alert-warning">No Records Found</div>
+		</td>
+	</tr>
+	
+	<% } %>
+	
+	]]>
+</script>
+
+<script type="text/x-jqote-template" id="template-details">
+	<![CDATA[
+	<h3><% if(this.details.ID==""){ %>Add Record<% } else { %>Edit Record<% } %></h3>
+	<form id="details-form" class="form-horizontal">
+		
+		<div class="form-group has-feedback">
+			<label for="party" class="col-sm-2 control-label">Party:</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" id="party" name="party" placeholder="Party Name" value="<%= this.details.party||'' %>">
+			</div>
+		</div>
+		
+		<div class="form-group has-feedback">
+			<label for="photo" class="col-sm-2 control-label">Photo:</label>
+			<div class="col-sm-5">
+				<div id="image-preview">
+					<% if (this.details.party_logo==""){ %>
+					<p class="form-control-static"><em>no image</em></p>
+					<% } else { %>
+					<img src='/image/250/250/party/<%= this.details.party_logo %>' style='width:100%;'/>
+					<% } %>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<button class="btn btn-info" id="upload-btn" type="button">Upload</button>
+			</div>
+			<input type="hidden" name="party_logo" id="party_logo" value="<%= this.details.party_logo %>"/>
+		</div>
+		
+		
+		<nav class="form-btn-bar">
+			<% if(this.details.ID!=""){ %>
+			<button class="btn btn-danger delete-btn" type="button"><i class="fa fa-trash"></i></button>
+			<% } %>
+			<div class="pull-right">
+				<button class="btn btn-link cancel-btn" type="button">Cancel</button>
+				<button class="btn btn-primary" type="submit" style="width:150px;">Save</button>
+			</div>
+		</nav>
+	</form>
+	]]>
+</script>
+<script type="text/x-jqote-template" id="template-records-no-records">
+	<![CDATA[
+	<tr>
+		<td>
+			<div style="padding:30px; text-align: center;" class="alert alert-warning">No Records Found</div>
+		</td>
+	
+	</tr>
+	
+	]]>
+</script>

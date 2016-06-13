@@ -1,0 +1,40 @@
+<div class="breadcrumbs">
+	<div class="container">
+		<h1 class="pull-left">Administration | Users</h1>
+		{% include "_admin_breadcrumbs.twig" %}
+	</div>
+</div>
+<section class="section" id="page-contents" >
+	<div class="container">
+		
+		<div class="col-sm-8 form-area" id="left-area">
+			
+			
+		</div>
+		<div class="col-sm-4" id="right-area">
+			<form class="form-inline" role="search" id="filter-form" style="margin-bottom:8px; margin-top:4px;" >
+				<div class="input-group" style="width:100%;">
+					<input type="text" class="form-control" placeholder="Search" name="search" id="search" value="">
+					<div class="input-group-btn" style="width: 37px;" id="btn-search-clear" >
+						<button class="btn btn-link" type="reset"><i class="fa fa-close"></i></button>
+					</div>
+					<div class="input-group-btn" style="width: 37px;">
+						<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+					</div>
+				
+				</div>
+			</form>
+			
+			<table class="table records" id="record-list" >
+				
+				<tbody>
+				
+				</tbody>
+			</table>
+			
+			<div id="pagination-area"></div>
+		
+		</div>
+	</div>	
+</section>	
+<div class="clearfix"></div>

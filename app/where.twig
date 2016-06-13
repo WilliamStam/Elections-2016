@@ -1,0 +1,74 @@
+<div class="breadcrumbs">
+	<div class="container">
+		<h1 class="pull-left">Where do i vote?</h1>
+		<ul class="pull-right breadcrumb">
+			{% include "_front_li_links.twig" %}
+			
+		</ul>
+	</div>
+</div>
+<section class="section">
+	<div class="container">
+		
+		<div class="col-sm-7 ">
+			
+				<form class="intro-form-block">
+					
+					<div class="input-group">
+						<input type="text" class="form-control" id="exampleInputName2" placeholder="16B Joubert Street, Louis Trichardt">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary">Address Lookup</button>
+						</span>
+					</div>
+					
+				
+					
+					
+				</form>
+			
+			<div style="margin-top:30px;">
+				<div class="box effect8" style="max-width:500px;margin:auto;">
+					<div id="map-area"><div id="leaflet"></div></div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			<div id="address-area" style="margin-top:30px;">
+				<h3>Voting station Details</h3>
+				<table class="table">
+					<tr>
+						<td>Name</td>
+						<td>CRYSTAL PARK PRIMARY SCHOOL</td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td>
+							<p>CNR CLYDESDALE & HORNBILL STR.</p>
+							<p>BENONI</p>
+							<p>CRYSTAL PARK</p>
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+			
+		</div>
+		
+		<div class="col-sm-5">
+			{% include "_timeline.twig" %}
+		
+		</div>
+		
+		
+	</div>
+	
+</section>
+<section class="section">
+	<div class="container">
+		
+	</div>
+</section>
+

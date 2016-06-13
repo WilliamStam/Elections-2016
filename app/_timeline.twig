@@ -1,0 +1,51 @@
+<ul class="timeline-v1" style="margin-bottom:0; padding-bottom:0;">
+	<li class="legend timeline-type-2">
+		<div class="legend-color"></div> Key dates for Parties and Candidates
+	</li>
+	<li class="legend timeline-type-3">
+		<div class="legend-color"></div> Key dates for Voters
+	</li>
+	<li class="clearfix" style="float: none; margin-bottom:0;"></li>
+</ul>
+<div id="election-timeline-area" >
+	<ul class="timeline-v1">
+		
+		{% for row in timeline %}
+			<li class="timeline-inverted timeline-type-{{ row['type'] }} {% if 'now'|date("Y-m-d") >  row['item_date']|date("Y-m-d")  %}past{% endif %}">
+				<div class="timeline-badge primary"><i class="fa fa-calendar"></i></div>
+				<div class="timeline-panel">
+					
+					<div class="timeline-body text-justify">
+						<h2 class="font-light">{{ row['item_date']|date("D, d F Y") }} &nbsp; {{ row['item_time'] }}</h2>
+						<div class="text">
+							{{ row['item_text']|raw }}
+						</div>
+					</div>
+				
+				</div>
+			</li>
+		{% endfor %}
+		<li class="clearfix" style="float: none; margin-bottom:0;"></li>
+	</ul>
+
+</div>
+<div style="padding-right:10px;">
+	<ul class="timeline-v1">
+		<li class="timeline-inverted timeline-type-1 ">
+			<div class="timeline-badge primary"><i class="fa fa-calendar"></i></div>
+			<div class="timeline-panel">
+				
+				<div class="timeline-body text-justify">
+					<h2 class="font-light">Wed, 03 August 2016 &nbsp; </h2>
+					<div style="margin:-5px;">
+						<img src="/app/_images/iec.fw.png" style="width:100%;" alt="">
+					</div>
+				</div>
+			
+			
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div class="clearfix"></div>

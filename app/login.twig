@@ -1,0 +1,39 @@
+<div class="breadcrumbs">
+	<div class="container">
+		<h1 class="pull-left">Admin Login</h1>
+		<ul class="pull-right breadcrumb">
+			<li class="active"><a href="/"><i class="fa fa-home"></i></a></li>
+			<li class="active"><a href="/where">Where do i vote?</a></li>
+			<li class="active"><a href="/">Am i registered?</a></li>
+			<li class="active"><a href="/">My voting status?</a></li>
+		
+		</ul>
+	</div>
+</div>
+<div class="login-container">
+
+<div class="row">
+		
+		<div class="panel">
+			{% if msg %}<div class="alert alert-danger">{{ msg }}</div>{% endif %}
+			<div class="panel-body">
+				
+				<form action="/login/do" method="post" id="loginForm" style="margin-bottom:60px;">
+					<div class="form-group">
+						<label class="control-label" for="username">Username</label>
+						<input type="text" placeholder="example@domain.com" title="Please enter you username" required="" value="{{ username }}" name="login_email" id="login_email" class="form-control">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="password">Password</label>
+						<input type="password" title="Please enter your password" placeholder="******" required="" value="" name="login_password" id="login_password" class="form-control">
+					</div>
+					<div class="clearfix"></div>
+					
+					<button class="btn btn-primary btn-block space-20">Login</button>
+					
+				</form>
+			</div>
+		</div>
+		
+	</div>
+</div>
