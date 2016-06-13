@@ -46,7 +46,7 @@ class lookup extends _ {
 				$data['code'] = 200;
 			}
 			$data['data']=$return;
-		//	test_array($data); 
+			
 		} 
 		
 		if ($data['data']=="" && $check==false){
@@ -75,7 +75,7 @@ class lookup extends _ {
 		
 		$data = models\ward::format($data);
 		
-		
+		//test_array($data);
 		return $GLOBALS["output"]['data'] = $data;
 	}
 	

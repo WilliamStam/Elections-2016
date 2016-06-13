@@ -30,7 +30,7 @@ class admin_wards extends _ {
 		if ($ward['code']=="404"){
 			$this->errors['wardID']="Ward doesn't exist";
 		} else {
-			$values['data'] = json_encode($ward->data);
+			$values['data'] = json_encode($ward['data']);
 		}
 		//test_array(array($ID,$values,$this->errors)); 
 	
