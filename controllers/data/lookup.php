@@ -60,7 +60,7 @@ class lookup extends _ {
 				if ($r && $r->code !='404'){
 					$values = array(
 							"wardID"=>$key,
-							"data"=>json_encode($return)
+							"data"=>($return)
 					);
 					
 					$ID = models\ward::_save($data['ID'],$values);
