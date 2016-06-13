@@ -16,6 +16,7 @@ class ward_map extends _ {
 	
 		}
 	function clicked(){
+		models\log::_do("2");
 		$result = array();
 		$key = isset($_GET['key'])?$_GET['key']:"";
 		

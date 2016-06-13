@@ -45,7 +45,7 @@
 					<li class="dropdown {% if page['section']=='admin' %}active{% endif %}">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i></a>
 						<ul class="dropdown-menu">
-							<li class="{% if page['section']=='admin' and page['sub_section']=='home' %}active{% endif %}"><a href="/admin">Administration</a></li>
+							<li class="{% if page['section']=='admin' and page['sub_section']=='home' %}active{% endif %}"><a href="/admin">Dashboard</a></li>
 							{% include "_admin_li_links.twig" %}
 							<li role="separator" class="divider"></li>
 							<li><a href="/logout">Logout</a></li>

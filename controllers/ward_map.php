@@ -8,10 +8,12 @@ class ward_map extends _ {
 	}
 	function page(){
 		//if ($this->user['ID']=="")$this->f3->reroute("/login");
-		
+		models\log::_do("1");
 		
 		$data = models\ward::getInstance()->getAll("","wardID ASC");
 		$data = models\ward::format($data);
+		
+		
 		
 		//test_array($data); 
 		$tmpl = new \template("template.twig");

@@ -8,7 +8,7 @@ class login extends _ {
 	}
 	function page(){
 		//if ($this->user['ID']=="")$this->f3->reroute("/login");
-		
+		models\log::_do("1");
 		
 		
 		
