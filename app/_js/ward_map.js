@@ -3,7 +3,7 @@ $(document).ready(function(){
 	map();
 	
 	if ($.bbq.getState("key")){
-		getClicked()
+		getWardDetailsMap()
 	}
 	
 
@@ -34,7 +34,7 @@ function map(){
 				layer.on('click', function(e) {
 				//	console.log("click")
 					$.bbq.pushState({"key":e.latlng.lng+","+e.latlng.lat});
-					getClicked()
+					getWardDetailsMap()
 					console.log(e)
 				});
 			}
@@ -49,11 +49,8 @@ function map(){
 	
 	
 }
-function getClicked(){
+function getWardDetailsMap(){
 	var key = $.bbq.getState("key");
-	
-	
-	
 	$.getData("/data/ward_map/clicked", {"key": key}, function (data) {
 		
 		

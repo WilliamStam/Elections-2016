@@ -92,7 +92,8 @@ class lookup extends _ {
 		$return = ($response['body']);
 		$r = json_decode($return);
 		$r = json_decode(json_encode($r), true);
-		//test_array($r); 
+	
+		//test_array($key); 
 		$data  = array();
 		
 		if (count($r)){
@@ -101,11 +102,62 @@ class lookup extends _ {
 			$data['code']=404;
 		}
 		
-		
-		
-		foreach ($r as $item){
-			$data[$item['type_name']] = $item;
+		if ($r){
+			foreach ($r as $item){
+				$data[$item['type_name']] = $item;
+			}
 		}
+		
+		
+		
+		return $GLOBALS["output"]['data'] = $data;
+	}
+	
+	function address($key){
+		if ($key) {
+		} else {
+			$key = $this->f3->get("PARAMS['key']");
+		}
+		if (isset($_GET['address'])&&$_GET['address'] &&$key==""){
+			$key = $_GET['address'];
+		}
+		$key_encoded = urlencode($key);
+		//http://mapit.code4sa.org/point/4326/29.910106658935547,-23.042962580313343
+		$url = "https://maps.googleapis.com/maps/api/geocode/json?address={$key_encoded}&key=AIzaSyALle6385UtVeQ_Sj8VYRvRoBjoGdbahRc";
+		$n = new \Web();
+		$response = $n->request($url);
+		$return = ($response['body']);
+		//test_array($response); 
+		$r = json_decode($return);
+		$r = json_decode(json_encode($r), true);
+	//	test_array(array("key"=>$key,"url"=>$url,"r"=>$r,"response"=>$response));
+		if (isset($r['results'][0]['geometry'])){
+			$r = $r['results'][0]['geometry'];
+			
+			$lnglat = "{$r['location']['lng']},{$r['location']['lat']}";
+			
+			$data = $this->point($lnglat);
+			
+			
+			if (count($data)){
+				$data['code']=200;
+			} else {
+				$data['code']=404;
+			}
+			$data['address'] = $key;
+			$data['geometry'] = $r;
+			
+			//test_array($point); 
+			
+		} else {
+			$data['code']=404;
+		}
+		
+	
+		
+		
+		
+		
 		
 		return $GLOBALS["output"]['data'] = $data;
 	}

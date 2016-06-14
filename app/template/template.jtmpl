@@ -70,7 +70,7 @@
 
 <script type="text/x-jqote-template" id="template-ward-details">
 	<![CDATA[
-	
+	<% if (this.name){ %>
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -91,6 +91,30 @@
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
+	
+	<% } else { %>
+	<form class="intro-form-block address-lookup-form" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Please enter an address</h4>
+			</div>
+			<div class="modal-body" style="position: relative;">
+				
+					<input type="text" class="form-control" id="address"  name="address" placeholder="16B Joubert Street, Louis Trichardt">
+						
+				
+			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Go</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+	</form>
+	<% } %>
 
 ]]>
 </script>
