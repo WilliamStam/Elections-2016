@@ -133,3 +133,77 @@
 
 ]]>
 </script>
+
+<script type="text/x-jqote-template" id="template-voter-status">
+	<![CDATA[
+	<% if (this.Voter.VoterId){ %>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">ID Number: <%= this.Voter.Id %></h4>
+			</div>
+			<div class="modal-body" style="position: relative;">
+				
+				<div class="text-success text-center" style="margin-top:30px;">
+					<i class="fa fa-check" style="font-size:50px;"></i>
+				</div>
+				
+				
+				<h3 class="text-success text-center" style="padding:30px 10px;"><%= this.Voter.VoterStatus %></h3>
+				
+				<h4>Voting Station:</h4>
+				
+				
+				<table class="table">
+					
+					<tr>
+						<th>Name:</th>
+						<td><%= this.Voter.VotingStation.Name %></td>
+					</tr>
+					<tr>
+						<th>Location:</th>
+						<td>
+							<%= this.Voter.VotingStation.Location.Street %><br>
+							
+							<%= this.Voter.VotingStation.Location.Suburb %><br>
+							<%= this.Voter.VotingStation.Location.Town %><br>
+						</td>
+					</tr>
+					<tr>
+						<th>GPS</th>
+						<td>Lat: <%= this.Voter.VotingStation.Location.Latitude %> | Lng: <%= this.Voter.VotingStation.Location.Longitude %></td>
+					</tr>
+				</table>
+				
+			
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+	
+	<% } else { %>
+	<form class="intro-form-block address-lookup-form" >
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">ID Number: <%= this.Voter.Id %></h4>
+				</div>
+				<div class="modal-body" style="position: relative;">
+					
+					<h3 class="text-danger text-center" style="padding:30px 10px;"><%= this.Voter.VoterStatus %></h3>
+				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</form>
+	<% } %>
+	
+	]]>
+</script>
