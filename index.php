@@ -158,24 +158,42 @@ $f3->route('GET|POST /admin/parties', 'controllers\admin_parties->page');
 
 
 
-$f3->route("GET /iec/token", function ($f3, $params) {
-	$url = $_SERVER['REQUEST_URI'];
-	$url = str_replace("/iec/", "", $url);
-	
+$f3->route("GET /iec/voter/@ID", function ($f3, $params) {
 	
 	
 	$post_data="grant_type=password&username=IECWebAPIMediaZN&password=53412d349f394c3aa5de5593961d2059";
 	$url="https://api.elections.org.za/token";
 	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_POST, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	$result = curl_exec($ch);
+	$options = array(
+			"method"=>"POST",
+			"content"=>$post_data
+	);
 	
-	test_array($result);
+	$web = new \Web();
+	$request = $web->request($url,$options);
+	$request = (json_decode($request['body']));
+	$token = $request->access_token;
+	
+	
+	$api_options = array(
+			"header"=>"Authorization: Bearer ".$token
+	);
+	$api_url = "https://api.elections.org.za/api/v1/Voters/GetVoterAllDetails?ID={$params['ID']}";
+	
+	//test_array($api_options); 
+	$api = (array)  $web->request($api_url,$api_options);
+	
+	$api['options'] = array(
+			"url"=>$api_url,
+			"options"=>$api_options
+	);
+	
+	$response = json_decode($api['body']);
+	
+	
+	test_array($response); 
+	
+	
 	
 	
 	
