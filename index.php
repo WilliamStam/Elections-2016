@@ -155,6 +155,36 @@ $f3->route('GET|POST /admin/councilors', 'controllers\admin_councilors->page');
 $f3->route('GET|POST /admin/parties', 'controllers\admin_parties->page');
 
 
+
+
+
+$f3->route("GET /iec/token", function ($f3, $params) {
+	$url = $_SERVER['REQUEST_URI'];
+	$url = str_replace("/iec/", "", $url);
+	
+	
+	
+	$post_data="grant_type=password&username=IECWebAPIMediaZN&password=53412d349f394c3aa5de5593961d2059";
+	$url="https://api.elections.org.za/token";
+	
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$result = curl_exec($ch);
+	
+	test_array($result);
+	
+	
+	
+});
+
+
+
+
+
 $f3->route("GET /image/@width/@height/*", function ($f3, $params) {
 	$path = $_SERVER['REQUEST_URI'];
 	
@@ -383,6 +413,11 @@ $f3->route("GET|POST /keepalive", function ($app, $params) {
 	unset($user["global_admin"]);
 	test_array($user);
 });
+
+
+
+
+
 
 
 $f3->route("GET|POST /list", function ($f3, $params) {
