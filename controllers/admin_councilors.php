@@ -9,7 +9,7 @@ class admin_councilors extends _ {
 	function page(){
 		if ($this->user['ID']=="")$this->f3->reroute("/login");
 		
-		$parties = models\party::getInstance()->getAll();
+		$parties = models\party::getInstance()->getAll("","party ASC");
 		
 		$tmpl = new \template("template.twig");
 		$tmpl->page = array(

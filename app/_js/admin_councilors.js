@@ -158,7 +158,7 @@ function getData(){
 		
 		
 		
-		
+		$("#partyID").select2();
 		
 		
 		var $pagenation = $("#pagination-area");
