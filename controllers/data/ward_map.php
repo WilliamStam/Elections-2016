@@ -28,6 +28,9 @@ class ward_map extends _ {
 				$result = $point['Ward'];
 				$result['code']=200;
 				$result['geojson']=($ward['data']);
+				
+				$result['councilors'] = models\councilor::getInstance()->getAll("wardID='{$point['Ward']['codes']['MDB']}'","fullname ASC");
+				
 			}
 		}
 		

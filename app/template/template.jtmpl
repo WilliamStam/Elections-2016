@@ -80,9 +80,24 @@
 			<div class="modal-body" style="position: relative;">
 				<div id="map-area-modal-bg"><div id="leaflet-modal"></div></div>
 				
-				<div style="height:100px;">
-					ssss
-				</div>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Party</th>
+					</tr>
+					
+					</thead>
+					<tbody>
+					<% for (var i in this.councilors){ %>
+					<tr>
+						<td><%= this.councilors[i].fullname %></td>
+						<td><%= this.councilors[i].party %></td>
+					</tr>
+					<% } %>
+					</tbody>
+				</table>
+				
 				
 			</div>
 			<div class="modal-footer">
