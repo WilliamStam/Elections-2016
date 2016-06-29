@@ -20,6 +20,7 @@ class admin_councilors extends _ {
 		
 		$values = array(
 			"fullname" => $this->post("fullname",true),
+			"IDNumber" => $this->post("IDNumber",true),
 			"partyID" => $this->post("partyID"),
 			"wardID" => $this->post("wardID"),
 			"photo" => $this->post("photo"),
