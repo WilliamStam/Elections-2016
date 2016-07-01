@@ -156,9 +156,13 @@ $f3->route('GET|POST /admin/parties', 'controllers\admin_parties->page');
 
 
 
+$f3->route('GET|POST /iec/voter', 'controllers\data\iec->voter');
+$f3->route('GET|POST /iec/votingStation', 'controllers\data\iec->votingStation');
 
 
-$f3->route("GET /iec/voter/@ID", function ($f3, $params) {
+
+
+$f3->route("GET /iec/ward/@wardID", function ($f3, $params) {
 	
 	
 	$post_data="grant_type=password&username=IECWebAPIMediaZN&password=53412d349f394c3aa5de5593961d2059";
@@ -174,11 +178,54 @@ $f3->route("GET /iec/voter/@ID", function ($f3, $params) {
 	$request = (json_decode($request['body']));
 	$token = $request->access_token;
 	
+	$ElectoralEventID = "402";
 	
 	$api_options = array(
 			"header"=>"Authorization: Bearer ".$token
 	);
-	$api_url = "https://api.elections.org.za/api/v1/Voters/GetVoterAllDetails?ID={$params['ID']}";
+	$api_url = "https://api.elections.org.za/api/v1/Delimitation?ElectoralEventID={$ElectoralEventID}&WardID={$params['wardID']}";
+	
+	//test_array($api_options); 
+	$api = (array)  $web->request($api_url,$api_options);
+	
+	$api['options'] = array(
+			"url"=>$api_url,
+			"options"=>$api_options
+	);
+	
+	$response = json_decode($api['body']);
+	
+	
+	test_array($response); 
+	
+	
+	
+	
+	
+});
+
+$f3->route("GET /iec/type/@type", function ($f3, $params) {
+	
+	
+	$post_data="grant_type=password&username=IECWebAPIMediaZN&password=53412d349f394c3aa5de5593961d2059";
+	$url="https://api.elections.org.za/token";
+	
+	$options = array(
+			"method"=>"POST",
+			"content"=>$post_data
+	);
+	
+	$web = new \Web();
+	$request = $web->request($url,$options);
+	$request = (json_decode($request['body']));
+	$token = $request->access_token;
+	
+	$ElectoralEventID = "";
+	
+	$api_options = array(
+			"header"=>"Authorization: Bearer ".$token
+	);
+	$api_url = "https://api.elections.org.za/api/v1/ElectoralEvent?ElectoralEventTypeID=3";
 	
 	//test_array($api_options); 
 	$api = (array)  $web->request($api_url,$api_options);

@@ -79,7 +79,7 @@
 			</div>
 			<div class="modal-body" style="position: relative;">
 				<div id="map-area-modal-bg"><div id="leaflet-modal"></div></div>
-				
+				<h4>Candidates:</h4>
 				<table class="table">
 					<thead>
 					<tr>
@@ -97,12 +97,33 @@
 					<% } %>
 					</tbody>
 				</table>
+				<h4>Voting Station:</h4>
 				
+				
+				<table class="table">
+					
+					<tr>
+						<th>Name:</th>
+						<td><%= this.VotingStation.Name %></td>
+					</tr>
+					<tr>
+						<th>Location:</th>
+						<td>
+							<%= this.VotingStation.Location.Street %><br>
+							
+							<%= this.VotingStation.Location.Suburb %><br>
+							<%= this.VotingStation.Location.Town %><br>
+						</td>
+					</tr>
+					<tr>
+						<th>GPS</th>
+						<td>Lat: <%= this.VotingStation.Location.Latitude %> | Lng: <%= this.VotingStation.Location.Longitude %></td>
+					</tr>
+				</table>
 				
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

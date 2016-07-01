@@ -9,7 +9,7 @@ $(".status-lookup-form").on("submit",function(e){
 	
 	if (IDNumber){
 		
-		$.get("/iec/voter/"+IDNumber,function(data){
+		$.getData("/iec/voter?IDNumber="+IDNumber,function(data){
 			$("#modal-window").jqotesub($("#template-voter-status"), data).modal("show").on("hidden.bs.modal", function () {
 				
 			})

@@ -15,7 +15,23 @@ class ward extends _ {
 		$result = array();
 		$key = isset($_GET['ward'])?$_GET['ward']:"";
 		
+		$vs = "";
+		
+		if ($key){
+			$split_key = explode(",",$key);
+			$lat = $split_key[1];
+			$lng = $split_key[0];
+			
+			
+			$vs = \controllers\data\iec::getInstance()->votingStation($lat,$lng);
+			
+			
+		}
+		
 		$point = \controllers\data\lookup::getInstance()->point("{$key}");
+		
+		
+		
 		
 		if ($point['code']==200){
 			$result['code']=404;
@@ -25,10 +41,13 @@ class ward extends _ {
 					
 					$ward = \controllers\data\lookup::getInstance()->ward($point['Ward']['codes']['MDB'],true);
 					$result = $point['Ward'];
+					$result['councilors'] = models\councilor::getInstance()->getAll("wardID='{$point['Ward']['codes']['MDB']}'","fullname ASC");
 					$result['code']=200;
 					$result['geojson']=($ward['data']);
 				}
 			}
+			$result['VotingStation']=$vs;
+			
 		} else {
 			$result['code']=404;
 		}
