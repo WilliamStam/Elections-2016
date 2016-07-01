@@ -81,6 +81,30 @@ class iec extends _ {
 		
 		return $GLOBALS["output"]['data'] = $response;
 	}
+	function candidates() {
+		
+		
+			$wardID = isset($_GET['wardID'])?$_GET['wardID']:"";
+		
+		
+		//test_array($IDNumber); 
+		$api_options = array(
+				"header"=>"Authorization: Bearer ".$this->token
+		);
+		$api_url = "https://api.elections.org.za/api/v1/LGECandidates?ElectoralEventID=402&WardID={$wardID}";
+		
+		//test_array($api_url); 
+		$api = (array)  $this->web->request($api_url,$api_options);
+		
+		$api['options'] = array(
+				"url"=>$api_url,
+				"options"=>$api_options
+		);
+		
+		$response = json_decode($api['body']);
+		
+		return $GLOBALS["output"]['data'] = $response;
+	}
 	
 	
 }

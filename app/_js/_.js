@@ -481,20 +481,7 @@ function sizeselect2(item) {
 	return str;
 }
 
-$(document).on("submit",".address-lookup-form",function(e){
-	e.preventDefault();
-	var data = $(this).serialize();
-	$.getData("/data/lookup/address", data, function (data) {
-		//console.log(data.Ward.codes.MDB);
-		
-		var lat = data.geometry.location.lat;
-		var lng = data.geometry.location.lng;
-		
-		$.bbq.pushState({"ward": lng + "," + lat});
-		getWardDetails()
-	})
-	
-});
+
 $(document).on("click", ".my-ward", function (e) {
 	e.preventDefault();
 	getMyWard();
@@ -526,9 +513,37 @@ function errorFunctionMyWard(position) {
 	$.bbq.removeState("ward");
 	getWardDetailsNoKey()
 }
+$(document).on("submit",".address-lookup-form",function(e){
+	e.preventDefault();
+	var data = $(this).serialize();
+	$.getData("/data/lookup/address", data, function (data) {
+		//console.log(data.Ward.codes.MDB);
+		var key = "";
+		if (data.geometry){
+			var lat = data.geometry.location.lat;
+			var lng = data.geometry.location.lng;
+			
+			key = lng + "," + lat;
+		}
+		$.bbq.pushState({"ward": key});
+		getWardDetails()
+	})
+	
+});
+
+$(document).on("click",".address-lookup-btn",function(e){
+	e.preventDefault();
+	
+		$.bbq.pushState({"ward": ""});
+		getWardDetails()
+
+	
+});
 
 function getWardDetails() {
 	var key = $.bbq.getState("ward");
+	
+	
 	$.getData("/data/ward/data", {"ward": key}, function (data) {
 		
 		$("#modal-window").jqotesub($("#template-ward-details"), data).modal("show").on("hidden.bs.modal", function () {
