@@ -533,10 +533,11 @@ $(document).on("submit",".status-lookup-form",function(e){
 		$field.after('<span class="help-block s form-validation">ID Number required</span>');
 	}
 	
-})
-
+});
+$(".status-lookup-btn").on("click",function(e){
+	alert("woop")
+});
 $(document).on("click",".status-lookup-btn",function(e){
-	alert("woopy")
 	e.preventDefault();
 	$.bbq.pushState({"IDNumber": ""});
 	getIDNumberDetails()
