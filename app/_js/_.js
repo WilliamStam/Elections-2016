@@ -513,6 +513,52 @@ function errorFunctionMyWard(position) {
 	$.bbq.removeState("ward");
 	getWardDetailsNoKey()
 }
+
+
+
+$(document).on("submit",".status-lookup-form",function(e){
+	e.preventDefault();
+	var data = $(this).serialize();
+	var key = $("#IDNumber",this).val();
+	console.log(key)
+	if (key){
+		
+		$(".form-validation",this).remove();
+		var $IDNumber = $("#IDNumber",this);
+		var IDNumber = $IDNumber.val();
+		$field = $IDNumber.parent();
+		$field.addClass("has-error");
+		$field.after('<span class="help-block s form-validation">ID Number required</span>');
+	} else {
+			$.bbq.pushState({"IDNumber": key});
+			getIDNumberDetails()
+	}
+	
+})
+
+$(document).on("click",".status-lookup-btn",function(e){
+	e.preventDefault();
+	$.bbq.pushState({"IDNumber": ""});
+	getIDNumberDetails()
+});
+
+function getIDNumberDetails() {
+	var key = $.bbq.getState("IDNumber");
+	console.log(key)
+	$.getData("/iec/voter?IDNumber="+key,function(data){
+		$("#modal-window").jqotesub($("#template-voter-status"), data).modal("show").on("hidden.bs.modal", function () {
+			
+		})
+		
+		
+	}, "idnumber-details")
+}
+
+
+
+
+
+
 $(document).on("submit",".address-lookup-form",function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
