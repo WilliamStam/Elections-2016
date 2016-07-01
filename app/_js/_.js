@@ -536,6 +536,7 @@ $(document).on("submit",".status-lookup-form",function(e){
 })
 
 $(document).on("click",".status-lookup-btn",function(e){
+	alert("woopy")
 	e.preventDefault();
 	$.bbq.pushState({"IDNumber": ""});
 	getIDNumberDetails()
