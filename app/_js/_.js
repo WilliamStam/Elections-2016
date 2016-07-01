@@ -660,3 +660,5 @@ function getWardDetailsNoKey() {
 	getWardDetails()
 	
 }
+
+;
