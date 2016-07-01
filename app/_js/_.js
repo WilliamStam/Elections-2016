@@ -120,7 +120,38 @@ $(window).resize(function() {
 });
 
 $(document).ready(function () {
-	menucalcs()
+	menucalcs();
+	
+	
+	$(document).on("submit",".status-lookup-form",function(e){
+		e.preventDefault();
+		var data = $(this).serialize();
+		var key = $("#IDNumber",this).val();
+		if (key){
+			$.bbq.pushState({"IDNumber": key});
+			getIDNumberDetails()
+			
+		} else {
+			$(".form-validation",this).remove();
+			var $IDNumber = $("#IDNumber",this);
+			var IDNumber = $IDNumber.val();
+			$field = $IDNumber.parent();
+			$field.addClass("has-error");
+			$field.after('<span class="help-block s form-validation">ID Number required</span>');
+		}
+		
+	});
+	$(".status-lookup-btn").on("click",function(e){
+		alert("from _.js")
+	});
+	$(document).on("click",".status-lookup-btn",function(e){
+		e.preventDefault();
+		$.bbq.pushState({"IDNumber": ""});
+		getIDNumberDetails()
+	});
+	
+	
+	
 });
 function menucalcs(){
 	var currentScroll = $(window).scrollTop();
@@ -515,33 +546,6 @@ function errorFunctionMyWard(position) {
 }
 
 
-
-$(document).on("submit",".status-lookup-form",function(e){
-	e.preventDefault();
-	var data = $(this).serialize();
-	var key = $("#IDNumber",this).val();
-	if (key){
-		$.bbq.pushState({"IDNumber": key});
-		getIDNumberDetails()
-		
-	} else {
-		$(".form-validation",this).remove();
-		var $IDNumber = $("#IDNumber",this);
-		var IDNumber = $IDNumber.val();
-		$field = $IDNumber.parent();
-		$field.addClass("has-error");
-		$field.after('<span class="help-block s form-validation">ID Number required</span>');
-	}
-	
-});
-$(".status-lookup-btn").on("click",function(e){
-	alert("woop")
-});
-$(document).on("click",".status-lookup-btn",function(e){
-	e.preventDefault();
-	$.bbq.pushState({"IDNumber": ""});
-	getIDNumberDetails()
-});
 
 function getIDNumberDetails() {
 	var key = $.bbq.getState("IDNumber");

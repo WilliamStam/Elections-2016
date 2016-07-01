@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	
 	$(".status-lookup-btn").on("click",function(e){
-		alert("woop")
+		alert("from home.js")
 	});
 	
 	
