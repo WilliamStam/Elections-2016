@@ -25901,18 +25901,17 @@ $(document).on("submit",".status-lookup-form",function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
 	var key = $("#IDNumber",this).val();
-	console.log(key)
 	if (key){
+		$.bbq.pushState({"IDNumber": key});
+		getIDNumberDetails()
 		
+	} else {
 		$(".form-validation",this).remove();
 		var $IDNumber = $("#IDNumber",this);
 		var IDNumber = $IDNumber.val();
 		$field = $IDNumber.parent();
 		$field.addClass("has-error");
 		$field.after('<span class="help-block s form-validation">ID Number required</span>');
-	} else {
-			$.bbq.pushState({"IDNumber": key});
-			getIDNumberDetails()
 	}
 	
 })
@@ -25925,13 +25924,10 @@ $(document).on("click",".status-lookup-btn",function(e){
 
 function getIDNumberDetails() {
 	var key = $.bbq.getState("IDNumber");
-	console.log(key)
 	$.getData("/iec/voter?IDNumber="+key,function(data){
 		$("#modal-window").jqotesub($("#template-voter-status"), data).modal("show").on("hidden.bs.modal", function () {
 			
 		})
-		
-		
 	}, "idnumber-details")
 }
 
@@ -25943,18 +25939,34 @@ function getIDNumberDetails() {
 $(document).on("submit",".address-lookup-form",function(e){
 	e.preventDefault();
 	var data = $(this).serialize();
-	$.getData("/data/lookup/address", data, function (data) {
-		//console.log(data.Ward.codes.MDB);
-		var key = "";
-		if (data.geometry){
-			var lat = data.geometry.location.lat;
-			var lng = data.geometry.location.lng;
-			
-			key = lng + "," + lat;
-		}
-		$.bbq.pushState({"ward": key});
-		getWardDetails()
-	})
+	var key = $("#address",this).val();
+	if (key){
+		$.getData("/data/lookup/address", data, function (data) {
+			//console.log(data.Ward.codes.MDB);
+			var key = "";
+			if (data.geometry){
+				var lat = data.geometry.location.lat;
+				var lng = data.geometry.location.lng;
+				
+				key = lng + "," + lat;
+			}
+			$.bbq.pushState({"ward": key});
+			getWardDetails()
+		})
+		
+	} else {
+		$(".form-validation",this).remove();
+		var $IDNumber = $("#address",this);
+		var IDNumber = $IDNumber.val();
+		$field = $IDNumber.parent();
+		$field.addClass("has-error");
+		$field.after('<span class="help-block s form-validation">Address required</span>');
+	}
+	
+	
+	
+	
+	
 	
 });
 
