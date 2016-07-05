@@ -74,27 +74,29 @@ function getWardDetailsMap(){
 			console.log(aream)
 			mapm.addLayer(aream);
 			mapm.fitBounds(aream.getBounds());
-			
-			if (data.VotingStation.Location.Latitude && data.VotingStation.Location.Longitude){
-				
-				//	L.Icon.Default.imagePath = 'path-to-your-leaflet-images-folder';
-				
-				var LeafIcon = L.Icon.extend({
-					options: {
-						
-						iconSize:     [100, 62],
-						iconAnchor:   [50, 62],
-						
-					}
-				});
-				
-				var greenIcon = new LeafIcon({iconUrl: '/app/_images/marker_iec.png'});
-				
-				
-				
-				
-				L.marker([data.VotingStation.Location.Latitude,data.VotingStation.Location.Longitude], {icon: greenIcon}).addTo(mapm);
+			if (data.VotingStation){
+				if (data.VotingStation.Location.Latitude && data.VotingStation.Location.Longitude){
+					
+					//	L.Icon.Default.imagePath = 'path-to-your-leaflet-images-folder';
+					
+					var LeafIcon = L.Icon.extend({
+						options: {
+							
+							iconSize:     [100, 62],
+							iconAnchor:   [50, 62],
+							
+						}
+					});
+					
+					var greenIcon = new LeafIcon({iconUrl: '/app/_images/marker_iec.png'});
+					
+					
+					
+					
+					L.marker([data.VotingStation.Location.Latitude,data.VotingStation.Location.Longitude], {icon: greenIcon}).addTo(mapm);
+				}
 			}
+			
 			
 			
 		})

@@ -28,7 +28,7 @@ class ward_map extends _ {
 				
 				$ward = \controllers\data\lookup::getInstance()->ward($point['Ward']['codes']['MDB']);
 				$result = $point['Ward'];
-				$result['councillors'] = models\councilor::getInstance()->getAll("wardID='{$point['Ward']['codes']['MDB']}'","fullname ASC");
+				$result['councillors'] = models\councilor::getInstance()->getAll("wID='{$point['Ward']['codes']['MDB']}'","fullname ASC");
 				
 				$result['code']=200;
 				$result['geojson']=($ward['data']);
