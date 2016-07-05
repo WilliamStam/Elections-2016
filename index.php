@@ -151,7 +151,7 @@ $f3->route('POST /login', 'controllers\login->login');
 $f3->route('GET|POST /admin', 'controllers\admin->page');
 $f3->route('GET|POST /admin/wards', 'controllers\admin_wards->page');
 $f3->route('GET|POST /admin/users', 'controllers\admin_users->page');
-$f3->route('GET|POST /admin/councilors', 'controllers\admin_councilors->page');
+$f3->route('GET|POST /admin/councillors', 'controllers\admin_councillors->page');
 $f3->route('GET|POST /admin/parties', 'controllers\admin_parties->page');
 
 
@@ -451,6 +451,9 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 	$data = file_get_contents("list.txt");
 	$lines = preg_split('/\R/', $data);;
 	
+	
+	
+	
 	$parties = models\party::getInstance()->getAll();
 	
 	$p = array();
@@ -458,7 +461,8 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 		$p[$party['party']]=$party['ID'];
 	}
 	
-	$a = new \DB\SQL\Mapper($f3->get("DB"), "councilors");
+	$a = new \DB\SQL\Mapper($f3->get("DB"), "councillors");
+	$b = new \DB\SQL\Mapper($f3->get("DB"), "councillors_wards");
 	//test_array($p); 
 	
 	$d = array();
@@ -483,16 +487,14 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 		}
 		
 		
-		
-			
-			
 		$wardID=trim($l[2]);
+		
 		if (strlen($wardID)>3){
 			$values = array(
 					"fullname" => trim($l[4])." ".trim($l[5]),
 					"IDNumber" => trim($l[3]),
 					"partyID" => $partyID,
-					"wardID" => $wardID,
+				//	"wardID" => $wardID,
 			);
 			
 			$a->load("IDNumber='{$values['IDNumber']}'");
@@ -506,9 +508,24 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 				}
 				
 				$a->save();
+				
+			}
+			$ID = ($a->ID) ? $a->ID : $a->_id;
+			
+	
+			
+			
+			$b->load("cID='{$ID}' and wID='{$wardID}' ");
+			
+			if ($b->dry()){
+				$b->cID=$ID;
+				$b->wID=$wardID;
+				$b->save();
 			}
 			
+			
 			$a->reset();
+			$b->reset();
 			
 			//test_array($values);
 			$d[] = $values;

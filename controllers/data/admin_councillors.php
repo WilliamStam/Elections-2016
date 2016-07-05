@@ -3,7 +3,7 @@
 namespace controllers\data;
 use \models as models;
 
-class admin_councilors extends _ {
+class admin_councillors extends _ {
 	function __construct() {
 		parent::__construct();
 		

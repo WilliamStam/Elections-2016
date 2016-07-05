@@ -89,14 +89,15 @@
 					
 					</thead>
 					<tbody>
-					<% for (var i in this.councilors){ %>
+					<% for (var i in this.councillors){ %>
 					<tr>
-						<td><%= this.councilors[i].fullname %></td>
-						<td><%= this.councilors[i].party %></td>
+						<td><%= this.councillors[i].fullname %></td>
+						<td><%= this.councillors[i].party %></td>
 					</tr>
 					<% } %>
 					</tbody>
 				</table>
+				<% if (this.VotingStation){ %>
 				<h4>Voting Station:</h4>
 				
 				
@@ -120,6 +121,7 @@
 						<td>Lat: <%= this.VotingStation.Location.Latitude %> | Lng: <%= this.VotingStation.Location.Longitude %></td>
 					</tr>
 				</table>
+				<% } %>
 				
 			</div>
 			<div class="modal-footer">

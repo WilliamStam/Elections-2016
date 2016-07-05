@@ -2,7 +2,7 @@
 namespace controllers;
 use \timer as timer;
 use \models as models;
-class admin_councilors extends _ {
+class admin_councillors extends _ {
 	function __construct(){
 		parent::__construct();
 	}
@@ -14,10 +14,10 @@ class admin_councilors extends _ {
 		$tmpl = new \template("template.twig");
 		$tmpl->page = array(
 			"section"    => "admin",
-			"sub_section"=> "councilors",
-			"template"   => "admin_councilors",
+			"sub_section"=> "councillors",
+			"template"   => "admin_councillors",
 			"meta"       => array(
-				"title"=> "Elections 2016 | Admin | Councilors",
+				"title"=> "Elections 2016 | Admin | councillors",
 			),
 			"js"=>array("/vendor/ckeditor/ckeditor/ckeditor.js")	
 		);

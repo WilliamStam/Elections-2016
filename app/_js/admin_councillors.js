@@ -1,7 +1,41 @@
 CKEDITOR.env.isCompatible = true;
 
+function ward_area(){
+	var empty = 0;
+	$("#ward-capture-area .new-capture").each(function(){
+		if ($(this).val()==""){
+			empty = empty + 1;
+		}
+	})
+	
+	if (empty==0){
+		data = {
+			"ID":"new-"+$("#ward-capture-area input").length+1,
+			"cID":$.bbq.getState("ID"),
+			"wID":"",
+			"new":true
+		}
+		
+		$("#ward-capture-area").jqoteapp($("#template-details-wardID"), data);
+	}
+	
+	
+	$("#ward-capture-area .row").each(function(){
+		var $this = $(this);
+		if ($this.find("input.ward-input").val()==""){
+			$this.find(".btn.btn-remove").hide();
+		} else {
+			$this.find(".btn.btn-remove").show();
+		}
+	})
+	
+}
+
 $(document).ready(function () {
 	
+	$(document).on("change","#ward-capture-area .ward-input",function(){
+		ward_area()
+	})
 	
 	
 	getData();
@@ -56,7 +90,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		var $this = $(this).closest("form");
 		if(confirm("Are you sure you want to delete this record?")){
-			$.post("/save/admin_councilors/delete?ID="+$.bbq.getState("ID"),{},function(result){
+			$.post("/save/admin_councillors/delete?ID="+$.bbq.getState("ID"),{},function(result){
 				result = result.data;
 				if (!result.error){
 					toastr["info"]("Record Removed")
@@ -97,7 +131,7 @@ $(document).on("submit","#details-form",function(e){
 	var saveForm = true;
 	
 	if (saveForm){
-		$.post("/save/admin_councilors/form?ID="+$.bbq.getState("ID"),data,function(result){
+		$.post("/save/admin_councillors/form?ID="+$.bbq.getState("ID"),data,function(result){
 			result = result.data;
 			validationErrors(result, $this);
 			if (!result.errors){
@@ -131,12 +165,13 @@ function getData(){
 	var ID = $.bbq.getState("ID");
 	
 	
-	$.getData("/data/admin_councilors/data", {"page": page, "search": search, "ID": ID}, function (data) {
+	$.getData("/data/admin_councillors/data", {"page": page, "search": search, "ID": ID}, function (data) {
 		
 
 		$("#record-list tbody").jqotesub($("#template-records"), data);
 		$("#left-area").jqotesub($("#template-details"), data);
 		
+		if ($("#synopsis").length) CKEDITOR.replace('synopsis',ckeditor_config);
 		if ($("#bio").length) CKEDITOR.replace('bio',ckeditor_config);
 		
 		$("#upload-btn").plupload({
@@ -156,7 +191,7 @@ function getData(){
 			}
 		});
 		
-		
+		ward_area()
 		
 		$("#partyID").select2();
 		

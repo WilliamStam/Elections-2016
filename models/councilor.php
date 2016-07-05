@@ -18,13 +18,13 @@ class councilor extends _ {
 
 	function get($ID,$options=array()) {
 		$timer = new timer();
-		$where = "councilors.ID = '$ID'";
+		$where = "councillors.ID = '$ID'";
 		
 
 
 		$result = $this->f3->get("DB")->exec("
-			SELECT *
-			FROM councilors INNER JOIN parties ON councilors.partyID = parties.ID
+			SELECT *, councillors.ID as ID
+			FROM councillors INNER JOIN parties ON councillors.partyID = parties.ID
 			WHERE $where;
 		"
 		);
@@ -33,8 +33,9 @@ class councilor extends _ {
 		if (count($result)) {
 			$return = $result[0];
 			
+			$return['wards'] = $this->f3->get("DB")->exec("SELECT * FROM councillors_wards WHERE cID = '{$return['ID']}'");
 		} else {
-			$return = parent::dbStructure("councilors");
+			$return = parent::dbStructure("councillors",array("wards"=>array()));
 		}
 		
 		//test_array($return);
@@ -67,9 +68,11 @@ class councilor extends _ {
 
 
 		$result = $f3->get("DB")->exec("
-			 SELECT DISTINCT *, councilors.ID as ID
-			FROM councilors INNER JOIN parties ON councilors.partyID = parties.ID
+			 SELECT DISTINCT *, councillors.ID as ID, GROUP_CONCAT(DISTINCT wID SEPARATOR ', ') as wards
+			FROM (councillors INNER JOIN parties ON councillors.partyID = parties.ID) LEFT JOIN councillors_wards ON councillors.ID = councillors_wards.cID
 			$where
+			GROUP BY councillors.ID
+			
 			$orderby
 			$limit;
 		", $args, $ttl
@@ -94,7 +97,7 @@ class councilor extends _ {
 		
 
 
-		$a = new \DB\SQL\Mapper($f3->get("DB"), "councilors");
+		$a = new \DB\SQL\Mapper($f3->get("DB"), "councillors");
 		$a->load("ID='$ID'");
 
 		foreach ($values as $key => $value) {
@@ -106,6 +109,28 @@ class councilor extends _ {
 
 		$a->save();
 		$ID = ($a->ID) ? $a->ID : $a->_id;
+		
+		if (isset($values['wards'])){
+			$b = new \DB\SQL\Mapper($f3->get("DB"), "councillors_wards");
+			foreach ($values['wards'] as $item){
+				$b->load("ID='{$item['ID']}'");
+				
+				if ($item['wID']==""){
+					$b->erase();
+				} else {
+					$b->cID = $ID;
+					$b->wID = $item['wID'];
+					$b->save();
+				}
+				
+				$b->reset();
+				
+				
+				
+			}
+			
+			
+		}
 		
 		
 		$timer->_stop(__NAMESPACE__, __CLASS__, __FUNCTION__, func_get_args());
@@ -120,7 +145,7 @@ class councilor extends _ {
 		$user = $f3->get("user");
 
 
-		$a = new \DB\SQL\Mapper($f3->get("DB"),"councilors");
+		$a = new \DB\SQL\Mapper($f3->get("DB"),"councillors");
 		$a->load("ID='$ID'");
 
 		$a->erase();

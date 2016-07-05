@@ -3,7 +3,7 @@
 namespace controllers\save;
 use \models as models;
 
-class admin_councilors extends _ {
+class admin_councillors extends _ {
 	function __construct() {
 		parent::__construct();
 		$this->user = $this->f3->get("user");
@@ -22,23 +22,36 @@ class admin_councilors extends _ {
 			"fullname" => $this->post("fullname",true),
 			"IDNumber" => $this->post("IDNumber",true),
 			"partyID" => $this->post("partyID"),
-			"wardID" => $this->post("wardID"),
 			"photo" => $this->post("photo"),
 			"bio" => $this->post("bio"),
 		);
 		if ($values['partyID']==""){
 			$this->errors['partyID']="Please select a party for this councilor";
 		}
-		
-		$ward = \controllers\data\lookup::getInstance()->ward($values['wardID']);
-		
-		
-		if ($ward['code']=="404"){
-			$this->errors['wardID']="Ward doesn't exist";
-		} else {
-			$values['data'] = json_encode($ward->data);
+		$war = array();
+		foreach ($_POST as $key=>$value){
+			if (substr($key,0,6)=="wardID"){
+				$wID = str_replace("wardID-","",$key);
+				if (substr($wID,0,4)=="new-"){
+					$wID = "";
+				}
+				
+				if ($wID=="" && $value==""){
+					
+				} else {
+					$war[] = array("ID"=>$wID,"wID"=>$value);
+					$ward = \controllers\data\lookup::getInstance()->ward($value);
+				}
+				
+				
+				
+				
+			//	test_array($key); 
+			}
 		}
+		$values['wards']=$war;
 		
+			
 		
 		//test_array(array($ID,$values,$this->errors)); 
 	
