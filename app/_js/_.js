@@ -141,9 +141,7 @@ $(document).ready(function () {
 		}
 		
 	});
-	$(".status-lookup-btn").on("click",function(e){
-		alert("from _.js")
-	});
+	
 	$(document).on("click",".status-lookup-btn",function(e){
 		e.preventDefault();
 		$.bbq.pushState({"IDNumber": ""});

@@ -21,7 +21,6 @@ var jsfile = [
 	'app/_js/plugins/jquery.ui.touch-punch.min.js',
 	'app/_js/plugins/jquery.keepalive.js',
 	'app/_js/plugins/jquery.plupload.js',
-	'app/_js/_.js'
 ];
 
 module.exports = function (grunt) {
