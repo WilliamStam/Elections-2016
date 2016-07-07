@@ -114,6 +114,7 @@ class lookup extends _ {
 	}
 	
 	function address($key){
+		models\log::_do("5");
 		if ($key) {
 		} else {
 			$key = $this->f3->get("PARAMS['key']");

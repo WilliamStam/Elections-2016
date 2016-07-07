@@ -36,6 +36,7 @@ class iec extends _ {
 	
 	
 	function voter() {
+		models\log::_do("4");
 		$IDNumber = isset($_GET['IDNumber'])?$_GET['IDNumber']:"";
 		//test_array($IDNumber); 
 		$api_options = array(
