@@ -25,7 +25,7 @@ class admin_wards extends _ {
 		);
 		
 		$ward = \controllers\data\lookup::getInstance()->ward($values['wardID'],true);
-		
+		$values['last_update'] = date("Y-m-d H:i:s");
 		// test_array($ward['code']); 
 		if ($ward['code']=="404"){
 			$this->errors['wardID']="Ward doesn't exist";

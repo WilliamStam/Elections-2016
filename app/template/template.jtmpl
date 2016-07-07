@@ -78,25 +78,35 @@
 				<h4 class="modal-title">Ward: <%= this.name %></h4>
 			</div>
 			<div class="modal-body" style="position: relative;">
-				<div id="map-area-modal-bg"><div id="leaflet-modal"></div></div>
+				<div class="box effect8" style="margin:auto;">
+					<div id="map-area-modal-bg"><div id="leaflet-modal"></div></div>
+				</div>
+				
+				
 				<h4>Candidates:</h4>
-				<table class="table">
-					<thead>
-					<tr>
-						<th>Name</th>
-						<th>Party</th>
-					</tr>
-					
-					</thead>
-					<tbody>
-					<% for (var i in this.councillors){ %>
-					<tr>
-						<td><%= this.councillors[i].fullname %></td>
-						<td><%= this.councillors[i].party %></td>
-					</tr>
-					<% } %>
-					</tbody>
-				</table>
+				
+				<% for (var i in this.councillors){ %><a href="#">
+				<div class="media">
+					<div class="media-left">
+						
+							<% if (this.councillors[i].photo && this.councillors[i].photo!='null'){ %>
+							<img src='/image/250/250/councilor/<%= this.councillors[i].photo %>' class="media-object" />
+							<% } else { %>
+							
+							<% } %>
+							
+							
+						
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading"><%= this.councillors[i].fullname %></h4>
+						<div class="sub"><%= this.councillors[i].party %></div>
+						<%= this.councillors[i].synopsis||'' %>
+					</div>
+				</div></a>
+				<% } %>
+				
+				
 				<% if (this.VotingStation){ %>
 				<h4>Voting Station:</h4>
 				

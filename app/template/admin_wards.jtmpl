@@ -6,6 +6,9 @@
 		<td>
 			<%= this.records[i].wardID %>
 		</td>
+		<td style="font-size:10px; width:120px;">
+			<%= this.records[i].last_update||'' %>
+		</td>
 		
 	</tr>
 	<% } %>
