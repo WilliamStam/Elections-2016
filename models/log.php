@@ -180,11 +180,14 @@ class log extends _ {
 		
 		$userKey = md5($IP . "|".$proxyIP);
 		
+		$bot = is_bot();
+		
 		$values = array(
 			"typeID"=>$typeID,
 			"userKey"=>$userKey,
 			"ip"=>$IP,
 			"page"=>$page,
+			"bot"=>$bot,
 				
 		);
 		

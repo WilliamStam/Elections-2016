@@ -53,6 +53,25 @@
 				</tr>
 				</tbody>
 			</table>
+			<hr>
+			<h1>User Types</h1>
+			<table class="table">
+				<thead>
+				<tr>
+					<td>type</td>
+					<td>Count</td>
+				</tr>
+				</thead>
+				<tbody>
+				{% for key,row in stats['user_type'] %}
+					<tr>
+						<td>{{ key }}</td>
+						<td>{{ row }}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			<hr>
 			<h4>Visitors: {{ stats['unique_users'] }}</h4>
 		</div>
 		

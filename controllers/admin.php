@@ -19,6 +19,29 @@ class admin extends _ {
 		$pages = $this->f3->get("DB")->exec("SELECT page, count(ID) as c FROM stats WHERE typeID='1' GROUP BY `page` ");
 		
 		$users = $this->f3->get("DB")->exec("SELECT userKey, count(ID) as c FROM stats GROUP BY `userKey` ");
+		
+		
+		$userType = $this->f3->get("DB")->exec("SELECT bot, count(ID) as c FROM stats GROUP BY `bot` ");
+		$u = array();
+		foreach ($sections as $item){
+			$label = $item['bot']=='1'?"bot":"user";
+			
+			
+			$u[$label] = $item['c'];
+		}
+		
+		//test_array($u); 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		$stats['user_type'] = $u;
+		
 		$stats['unique_users'] = count($users);
 		
 		$stats['types'] = $s;
