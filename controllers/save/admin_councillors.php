@@ -24,6 +24,7 @@ class admin_councillors extends _ {
 			"partyID" => $this->post("partyID"),
 			"photo" => $this->post("photo"),
 			"bio" => $this->post("bio"),
+			"synopsis" => $this->post("synopsis"),
 		);
 		if ($values['partyID']==""){
 			$this->errors['partyID']="Please select a party for this councilor";
