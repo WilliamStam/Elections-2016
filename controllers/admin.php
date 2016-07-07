@@ -9,6 +9,23 @@ class admin extends _ {
 	function page(){
 		if ($this->user['ID']=="")$this->f3->reroute("/login");
 		
+		$stats = array();
+		
+		$sections = $this->f3->get("DB")->exec("SELECT typeID, count(ID) as c FROM stats GROUP BY typeID");
+		$s = array();
+		foreach ($sections as $item){
+			$s[$item['typeID']] = $item['c'];
+		}
+		$pages = $this->f3->get("DB")->exec("SELECT page, count(ID) as c FROM stats WHERE typeID='1' GROUP BY `page` ");
+		
+		$users = $this->f3->get("DB")->exec("SELECT userKey, count(ID) as c FROM stats GROUP BY `userKey` ");
+		$stats['unique_users'] = count($users);
+		
+		$stats['types'] = $s;
+		$stats['pages'] = $pages;
+		
+		
+		if (isset($_GET['d'])) test_array($stats); 
 		
 		
 		$tmpl = new \template("template.twig");
@@ -20,6 +37,7 @@ class admin extends _ {
 				"title"=> "Elections 2016 | Admin",
 			),
 		);
+		$tmpl->stats = $stats;
 		$tmpl->output();
 	}
 	

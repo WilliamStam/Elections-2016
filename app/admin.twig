@@ -7,9 +7,56 @@
 <section class="section">
 	<div class="container">
 		
-		<div class="col-sm-12 ">
-			
+		<div class="col-sm-6 ">
+			<h1>Pages</h1>
+			<table class="table">
+				<thead>
+				<tr>
+					<td>Page</td>
+					<td>Count</td>
+				</tr>
+				</thead>
+				<tbody>
+				{% for row in stats['pages'] %}
+				<tr>
+					<td>{{ row['page'] }}</td>
+					<td>{{ row['c'] }}</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
 			
 		</div>
+		
+		<div class="col-sm-6 ">
+			
+			<h1>Sections</h1>
+			<table class="table">
+				<thead>
+				<tr>
+					<td>Page</td>
+					<td>Count</td>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Page view</td>
+					<td>{{ stats['types']['1'] }}</td>
+				</tr>
+				<tr>
+					<td>Ward map click</td>
+					<td>{{ stats['types']['2'] }}</td>
+				</tr>
+				<tr>
+					<td>"My ward"</td>
+					<td>{{ stats['types']['3'] }}</td>
+				</tr>
+				</tbody>
+			</table>
+			<h4>Visitors: {{ stats['unique_users'] }}</h4>
+		</div>
+		
+		
+		
 	</div>	
 </section>	
