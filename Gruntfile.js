@@ -1,16 +1,15 @@
 var jsfile = [
 	'vendor/components/jquery/jquery.js',
 	'vendor/components/bootstrap/js/bootstrap.js' ,
-	'vendor/components/jquery-hotkeys/jquery.hotkeys.js',
-	'vendor/components/jquery-mousewheel/jquery.mousewheel.js',
-	'vendor/components/TouchSwipe-Jquery-Plugin/jquery.touchSwipe.js',
+	//'vendor/components/jquery-hotkeys/jquery.hotkeys.js',
+	//'vendor/components/jquery-mousewheel/jquery.mousewheel.js',
+	//'vendor/components/TouchSwipe-Jquery-Plugin/jquery.touchSwipe.js',
 	'vendor/components/jQote2/jquery.jqote2.js',
-	'vendor/timrwood/moment/moment.js',
-	'vendor/components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
-	'vendor/components/daterangepicker/daterangepicker.js',
-	'vendor/components/hideseek/jquery.hideseek.min.js',
-	'vendor/moxiecode/plupload/js/plupload.full.min.js',
-	'vendor/moxiecode/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js',
+	//'vendor/timrwood/moment/moment.js',
+	//'vendor/components/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+	//'vendor/components/daterangepicker/daterangepicker.js',
+	//'vendor/components/hideseek/jquery.hideseek.min.js',
+	
 	'vendor/components/toastr/toastr.js',
 	'vendor/drmonty/leaflet/js/leaflet.min.js',
 	
@@ -18,8 +17,11 @@ var jsfile = [
 	'app/_js/plugins/jquery.getData.js',
 	'app/_js/plugins/jquery.ba-dotimeout.min.js',
 	'app/_js/plugins/jquery.ba-bbq.js',
-	'app/_js/plugins/jquery.ui.touch-punch.min.js',
-	'app/_js/plugins/jquery.keepalive.js',
+	//'app/_js/plugins/jquery.ui.touch-punch.min.js',
+	//'app/_js/plugins/jquery.keepalive.js',
+	
+	'vendor/moxiecode/plupload/js/plupload.full.min.js',
+	'vendor/moxiecode/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js',
 	'app/_js/plugins/jquery.plupload.js',
 ];
 

@@ -303,16 +303,16 @@
         },
         {
             "name": "components/jqueryui",
-            "version": "1.11.4",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/components/jqueryui.git",
-                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1"
+                "reference": "51d123ace890e283c7a6471c14ac14ad34ba988b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/components/jqueryui/zipball/c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
-                "reference": "c34f8dbf3ba57b3784b93f26119f436c0e8288e1",
+                "url": "https://api.github.com/repos/components/jqueryui/zipball/51d123ace890e283c7a6471c14ac14ad34ba988b",
+                "reference": "51d123ace890e283c7a6471c14ac14ad34ba988b",
                 "shasum": ""
             },
             "require": {
@@ -384,7 +384,7 @@
                 }
             ],
             "description": "jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library. Whether you're building highly interactive web applications or you just need to add a date picker to a form control, jQuery UI is the perfect choice.",
-            "time": "2015-03-13 14:48:12"
+            "time": "2016-07-11 06:39:17"
         },
         {
             "name": "components/modernizr",
@@ -758,16 +758,16 @@
         },
         {
             "name": "timrwood/moment",
-            "version": "2.13.0",
+            "version": "2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moment/moment.git",
-                "reference": "d6651c21c6131fbb5db891b60971357739015688"
+                "reference": "227746b29044a4c2160ae7c597c7f24aacac2635"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moment/moment/zipball/d6651c21c6131fbb5db891b60971357739015688",
-                "reference": "d6651c21c6131fbb5db891b60971357739015688",
+                "url": "https://api.github.com/repos/moment/moment/zipball/227746b29044a4c2160ae7c597c7f24aacac2635",
+                "reference": "227746b29044a4c2160ae7c597c7f24aacac2635",
                 "shasum": ""
             },
             "require": {
@@ -808,7 +808,7 @@
                 "time",
                 "validate"
             ],
-            "time": "2016-04-18 07:29:18"
+            "time": "2016-07-04 06:39:29"
         },
         {
             "name": "twig/twig",
