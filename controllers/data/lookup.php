@@ -28,7 +28,7 @@ class lookup extends _ {
 		
 		$data = models\ward::getInstance()->get($key);
 		$lookup_key = "MDB:".$key;
-		$url = "http://mapit.code4sa.org/{$lookup_type}/{$lookup_key}.geojson?simplify_tolerance=0.0001";
+		$url = "http://mapit.code4sa.org/{$lookup_type}/{$lookup_key}.geojson?simplify_tolerance=0.0001&generation=2";
 		//	test_array($return); 
 		
 		//test_array($check); 
@@ -86,7 +86,7 @@ class lookup extends _ {
 			$key = $this->f3->get("PARAMS['key']");
 		}
 		//http://mapit.code4sa.org/point/4326/29.910106658935547,-23.042962580313343
-		$url = "http://mapit.code4sa.org/point/4326/$key";
+		$url = "http://mapit.code4sa.org/point/4326/$key?generation=2";
 		$n = new \Web();
 		$response = $n->request($url);
 		$return = ($response['body']);
