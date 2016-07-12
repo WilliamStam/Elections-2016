@@ -161,7 +161,7 @@
 					<h4 class="modal-title">ID Number: <%= this.Voter.Id %></h4>
 				</div>
 				<div class="modal-body" style="position: relative;">
-					
+					<div style="position:relative;z-index:1;">
 					<div class="text-success text-center" style="margin-top:30px;">
 						<i class="fa fa-check" style="font-size:50px;"></i>
 					</div>
@@ -192,14 +192,14 @@
 							<td>Lat: <%= this.Voter.VotingStation.Location.Latitude %> | Lng: <%= this.Voter.VotingStation.Location.Longitude %></td>
 						</tr>
 					</table>
-					
+				</div>
 					<% if (this.geojson){ %>
-					<div class="box effect8" style="margin:auto;">
-						<div id="map-area-modal-bg"><div id="leaflet-modal"></div></div>
+					<div style="position:absolute; bottom:0; top:0;left:0; right:0; z-index:0; opacity:0.4">
+						<div id="map-area-modal-bg"><div id="leaflet-modal" style="height:100%; width:100%;min-height: 390px;"></div></div>
 					</div>
 					<% } %>
 					<% if (this.councillors){ %>
-						<h4>Candidates:</h4>
+						<h4 style="margin-top:40px;">Candidates:</h4>
 						
 						<% for (var i in this.councillors){ %>
 							<%= $.jqote( $("#template-councillors-list"),this.councillors[i] ) %>
