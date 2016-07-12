@@ -161,7 +161,7 @@
 					<h4 class="modal-title">ID Number: <%= this.Voter.Id %></h4>
 				</div>
 				<div class="modal-body" style="position: relative;">
-					<div style="position:relative;z-index:1;">
+					<div style="position:relative;z-index:1;text-shadow:1px 1px #fff;">
 					<div class="text-success text-center" style="margin-top:30px;">
 						<i class="fa fa-check" style="font-size:50px;"></i>
 					</div>
