@@ -194,8 +194,8 @@
 					</table>
 				</div>
 					<% if (this.geojson){ %>
-					<div style="position:absolute; bottom:0; top:0;left:0; right:0; z-index:0; opacity:0.4">
-						<div id="map-area-modal-bg"><div id="leaflet-modal" style="height:100%; width:100%;min-height: 390px;"></div></div>
+					<div style="position:absolute; height:390px; top:0;left:0; right:0; z-index:0; opacity:0.4">
+						<div id="map-area-modal-bg"><div id="leaflet-modal"></div></div>
 					</div>
 					<% } %>
 					<% if (this.councillors){ %>
@@ -278,7 +278,7 @@
 <script type="text/x-jqote-template" id="template-councillors-list">
 	<![CDATA[
 	
-	<a href="#">
+	<a href="#" class="councillors-list-item">
 		<div class="media">
 			<div class="media-left">
 				
@@ -296,7 +296,10 @@
 				<div class="sub"><%= this.party %></div>
 				<%= this.synopsis||'' %>
 			</div>
-		</div></a>
-	
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</a>
+	<div class="clearfix"></div>
 	]]>
 </script>
