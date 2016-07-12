@@ -1,5 +1,6 @@
 #map-area {
-  position: relative;
+  box-shadow: 0 0 30px #ccc inset;
+  border: 2px solid #e1e1e1;
 }
 #leaflet {
   height: 400px;

@@ -1,3 +1,8 @@
+var windowHeight = $(window).height();
+
+$("#leaflet").css({"height":windowHeight-200})
+
+
 $(document).ready(function(){
 	
 	map();
@@ -12,6 +17,9 @@ $(document).ready(function(){
 
 
 function map(){
+	
+	
+	
 	var map = new L.Map("leaflet");
 	map.attributionControl.setPrefix('');
 	
