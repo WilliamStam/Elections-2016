@@ -71,7 +71,7 @@ class iec extends _ {
 		if (isset($point['Ward'])){
 			if (isset($point['Ward']['codes']['MDB'])&&$point['Ward']['codes']['MDB']){
 				
-				$ward = \controllers\data\lookup::getInstance()->ward($point['Ward']['codes']['MDB']);
+				$ward = \controllers\data\lookup::getInstance()->ward($point['Ward']['codes']['MDB'],true);
 				$result['geojson'] = $point['Ward']['geojson'];
 				$result['councillors'] = models\councilor::getInstance()->getAll("wID='{$point['Ward']['codes']['MDB']}'","fullname ASC");
 				
