@@ -18,7 +18,7 @@
 			<form class="intro-form-block status-lookup-form" >
 				
 				<div class="input-group">
-					<input type="text" class="form-control" id="IDNumber" name="IDNumber"  placeholder="xxxxxxxxxxxxx">
+					<input type="text" class="form-control" id="IDNumber" name="IDNumber"  placeholder="xxxxxxxxxxxxx" {% if _isLocal %}value="6703295115086"{% endif %}>
 						<span class="input-group-btn">
 							<button type="submit" class="btn btn-primary" data-text="Searching">Status Lookup</button>
 						</span>

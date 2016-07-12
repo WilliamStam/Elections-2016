@@ -85,25 +85,8 @@
 				
 				<h4>Candidates:</h4>
 				
-				<% for (var i in this.councillors){ %><a href="#">
-				<div class="media">
-					<div class="media-left">
-						
-							<% if (this.councillors[i].photo && this.councillors[i].photo!='null'){ %>
-							<img src='/image/250/250/councilor/<%= this.councillors[i].photo %>' class="media-object" />
-							<% } else { %>
-							
-							<% } %>
-							
-							
-						
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading"><%= this.councillors[i].fullname %></h4>
-						<div class="sub"><%= this.councillors[i].party %></div>
-						<%= this.councillors[i].synopsis||'' %>
-					</div>
-				</div></a>
+				<% for (var i in this.councillors){ %>
+					<%= $.jqote( $("#template-councillors-list"),this.councillors[i] ) %>
 				<% } %>
 				
 				
@@ -210,7 +193,19 @@
 						</tr>
 					</table>
 					
-				
+					<% if (this.geojson){ %>
+					<div class="box effect8" style="margin:auto;">
+						<div id="map-area-modal-bg"><div id="leaflet-modal"></div></div>
+					</div>
+					<% } %>
+					<% if (this.councillors){ %>
+						<h4>Candidates:</h4>
+						
+						<% for (var i in this.councillors){ %>
+							<%= $.jqote( $("#template-councillors-list"),this.councillors[i] ) %>
+						
+						<% } %>
+					<% } %>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -278,5 +273,30 @@
 		</div><!-- /.modal-dialog -->
 	</form>
 	<% } %>
+	]]>
+</script>
+<script type="text/x-jqote-template" id="template-councillors-list">
+	<![CDATA[
+	
+	<a href="#">
+		<div class="media">
+			<div class="media-left">
+				
+				<% if (this.photo && this.photo!='null'){ %>
+				<img src='/image/100/100/councilor/<%= this.photo %>' class="media-object" />
+				<% } else { %>
+				
+				<% } %>
+			
+			
+			
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading"><%= this.fullname %></h4>
+				<div class="sub"><%= this.party %></div>
+				<%= this.synopsis||'' %>
+			</div>
+		</div></a>
+	
 	]]>
 </script>

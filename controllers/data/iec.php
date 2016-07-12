@@ -52,9 +52,41 @@ class iec extends _ {
 				"options"=>$api_options
 		);
 		
-		$response = json_decode($api['body']);
+		$response = (array) json_decode($api['body'], true);
 		
-		return $GLOBALS["output"]['data'] = $response;
+		$result = $response;
+		
+		
+		
+		
+		$ward = $response['Voter']['VotingStation']['Delimitation']['WardID'];
+		
+		$key = $response['Voter']['VotingStation']['Location']['Longitude'].",".$response['Voter']['VotingStation']['Location']['Latitude'];
+		
+		//test_array(array($key,$result)); 
+		
+		$point = \controllers\data\lookup::getInstance()->point("{$key}");
+		
+		$result['code']=404;
+		if (isset($point['Ward'])){
+			if (isset($point['Ward']['codes']['MDB'])&&$point['Ward']['codes']['MDB']){
+				
+				$ward = \controllers\data\lookup::getInstance()->ward($point['Ward']['codes']['MDB']);
+				$result['geojson'] = $point['Ward']['geojson'];
+				$result['councillors'] = models\councilor::getInstance()->getAll("wID='{$point['Ward']['codes']['MDB']}'","fullname ASC");
+				
+				$result['code']=200;
+				$result['geojson']=($ward['data']);
+				
+				
+			}
+		}
+		
+		
+		
+		
+		
+		return $GLOBALS["output"]['data'] = $result;
 	}
 	function votingStation($lat="",$lng="") {
 		if (!is_string($lat)){
