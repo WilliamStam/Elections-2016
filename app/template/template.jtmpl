@@ -285,7 +285,9 @@
 				<% if (this.photo && this.photo!='null'){ %>
 				<img src='/image/100/100/councilor/<%= this.photo %>' class="media-object" />
 				<% } else { %>
-				
+				<div style="height:100px; width:100px; background: #f1f1f1" class="media-object no-thumbnail">
+					<img src='/app/_images/default_thumbnail.jpeg' style="height:100px; width:100px; opacity:0.6;" class="media-object" />
+				</div>
 				<% } %>
 			
 			
