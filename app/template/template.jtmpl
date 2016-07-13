@@ -300,7 +300,7 @@
 			
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading"><%= this.fullname %> <% if(this.age){ %><small class="pull-right">(age: <%= this.age %>)</small><% } %>
+				<h4 class="media-heading"><%= this.fullname %> <% if(this.age){ %><small class="pull-right" style="padding-top:5px;">(age: <%= this.age %>)</small><% } %>
 				</h4>
 				<div class="sub">
 					<% if(this.party_logo) { %>
