@@ -83,7 +83,7 @@
 				</div>
 				
 				
-				<h4>Candidates:</h4>
+				<h4 style="margin-top:20px;">Candidates:</h4>
 				
 				<% for (var i in this.councillors){ %>
 					<%= $.jqote( $("#template-councillors-list"),this.councillors[i] ) %>
