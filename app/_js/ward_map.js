@@ -61,7 +61,16 @@ function map(){
 		"c05":	"#c587eb",
 		"c06":"#e687eb"
 	}
-	
+	var defaultStyle = {
+		weight: 2,
+		opacity: 0.6,
+		fillOpacity: 0.1,
+	};
+	var highlightStyle = {
+		weight: 2,
+		opacity: 0.6,
+		fillOpacity: 0.4,
+	};
 	
 	
 	for (var i in _data){
@@ -80,7 +89,12 @@ function map(){
 					getWardDetailsMap()
 					//console.log(e)
 				});
-				
+				layer.on('mouseover', function(e) {
+					layer.setStyle(highlightStyle);
+				});
+				layer.on('mouseout', function(e) {
+					layer.setStyle(defaultStyle);
+				});
 				
 			}
 		});
