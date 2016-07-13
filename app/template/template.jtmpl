@@ -310,7 +310,10 @@
 					<% } %>
 					
 					<%= this.party %></div>
-				<%= this.synopsis||'' %>
+				
+				
+				<div style="margin-top:5px;"><%= this.synopsis||'' %></div>
+			
 			</div>
 			<div class="clearfix"></div>
 		</div>
