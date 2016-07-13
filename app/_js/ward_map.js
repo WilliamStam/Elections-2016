@@ -83,6 +83,7 @@ function map(){
 			},
 			
 			onEachFeature: function(feature, layer) {
+			
 				layer.on('click', function(e) {
 				//	console.log("click")
 					$.bbq.pushState({"key":e.latlng.lng+","+e.latlng.lat});
@@ -91,6 +92,9 @@ function map(){
 				});
 				layer.on('mouseover', function(e) {
 					layer.setStyle(highlightStyle);
+					
+					console.log(e)
+					
 				});
 				layer.on('mouseout', function(e) {
 					layer.setStyle(defaultStyle);
@@ -99,16 +103,16 @@ function map(){
 			}
 		});
 		
-		/*
+		
 		var label = L.marker(area.getBounds().getCenter(), {
 			icon: L.divIcon({
 				iconSize: null,
 				className: 'ward-label',
-				iconAnchor:   [60, 15],
-				html: '<div>Ward:<br>' + _data[i].wardID + '</div>'
+				iconAnchor:   [10, 5],
+				html: '<span>' + _data[i].label + '</span>'
 			})
 		}).addTo(map);
-		*/
+		
 		
 		//marker.bindLabel("My Label", {noHide: true, className: "my-label", offset: [0, 0] });
 		//marker.addTo(map);

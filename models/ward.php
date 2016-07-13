@@ -149,6 +149,7 @@ class ward extends _ {
 		foreach ($data as $item) {
 			$loc = substr($item['wardID'],3,2);
 			$item['parentID'] = $loc;
+			$item['label'] = substr($item['wardID'],5);
 			
 			$item['data'] = json_decode($item['data']);
 			//$item['data'] = array();
