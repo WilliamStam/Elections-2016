@@ -24,6 +24,7 @@ class ward_map extends _ {
 			"meta"       => array(
 				"title"=> "Elections 2016 | Wards",
 			),
+			//	"js"=>array("./app/_plugins/Please-compressed.js")
 		);
 		$tmpl->data = $data;
 		$tmpl->output();

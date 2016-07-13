@@ -15,7 +15,6 @@ $(document).ready(function(){
 	
 });
 
-
 function map(){
 	
 	
@@ -37,22 +36,56 @@ function map(){
 	
 	L.Icon.Default.imagePath = './app/_plugins/leaflet/images';
 	
+	/*
+	var t = Please.NAME_to_HSV("skyblue");
+	
+	var colours2 = Please.make_scheme(t,{
+		scheme_type: "analogous",
+				format: "hex",
+	});
+	var colours = {
+		"c01":colours2[0],
+		"c02":colours2[1],
+		"c03":colours2[2],
+		"c04":colours2[3],
+		"c05":colours2[4],
+		"c06":colours2[5]
+	}
+	*/
+	
+	var colours = {
+		"c01":"#87ceeb",
+		"c02":"#87aceb",
+		"c03":"#878beb",
+		"c04":"#a487eb",
+		"c05":	"#c587eb",
+		"c06":"#e687eb"
+	}
+	
+	
+	
 	for (var i in _data){
 		
 		var area = new L.GeoJSON(_data[i].data, {
+			style: function() {
+				
+				if (colours["c"+_data[i].parentID]) return {color: colours["c"+_data[i].parentID]};
+				
+			},
+			
 			onEachFeature: function(feature, layer) {
 				layer.on('click', function(e) {
 				//	console.log("click")
 					$.bbq.pushState({"key":e.latlng.lng+","+e.latlng.lat});
 					getWardDetailsMap()
-					console.log(e)
+					//console.log(e)
 				});
 				
 				
 			}
 		});
 		
-		
+		/*
 		var label = L.marker(area.getBounds().getCenter(), {
 			icon: L.divIcon({
 				iconSize: null,
@@ -61,7 +94,7 @@ function map(){
 				html: '<div>Ward:<br>' + _data[i].wardID + '</div>'
 			})
 		}).addTo(map);
-		
+		*/
 		
 		//marker.bindLabel("My Label", {noHide: true, className: "my-label", offset: [0, 0] });
 		//marker.addTo(map);
