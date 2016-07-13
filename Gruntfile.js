@@ -11,7 +11,8 @@ var jsfile = [
 	//'vendor/components/hideseek/jquery.hideseek.min.js',
 	
 	'vendor/components/toastr/toastr.js',
-	'vendor/drmonty/leaflet/js/leaflet.min.js',
+	'app/_plugins/leaflet/leaflet.js',
+	'vendor/components/Leaflet_label/dist/leaflet.label.js',
 	
 	'vendor/ivaynberg/select2/dist/js/select2.full.min.js',
 	'app/_js/plugins/jquery.getData.js',

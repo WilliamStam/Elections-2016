@@ -121,6 +121,30 @@
           "reference": "origin/master"
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "components/Leaflet",
+        "version": "dev-master",
+        "source": {
+          "url": "https://github.com/Leaflet/Leaflet",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "components/Leaflet_label",
+        "version": "dev-master",
+        "source": {
+          "url": "https://github.com/Leaflet/Leaflet.label",
+          "type": "git",
+          "reference": "origin/master"
+        }
+      }
     }
   ],
   "require": {
@@ -143,6 +167,7 @@
     "components/daterangepicker":"dev-master",
     "components/HideSeek":"dev-master",
     "components/toastr":"dev-master",
-    "drmonty/leaflet":"*"
+    //"components/Leaflet":"dev-master",
+    "components/Leaflet_label":"dev-master"
   }
 }

@@ -35,6 +35,8 @@ function map(){
 	map.addLayer(osm);
 	groupBounds = [];
 	
+	L.Icon.Default.imagePath = './app/_plugins/leaflet/images';
+	
 	for (var i in _data){
 		
 		var area = new L.GeoJSON(_data[i].data, {
@@ -45,11 +47,35 @@ function map(){
 					getWardDetailsMap()
 					console.log(e)
 				});
+				
+				
 			}
 		});
-		map.addLayer(area);
 		
+		
+		var label = L.marker(area.getBounds().getCenter(), {
+			icon: L.divIcon({
+				iconSize: null,
+				className: 'ward-label',
+				iconAnchor:   [60, 15],
+				html: '<div>Ward:<br>' + _data[i].wardID + '</div>'
+			})
+		}).addTo(map);
+		
+		
+		//marker.bindLabel("My Label", {noHide: true, className: "my-label", offset: [0, 0] });
+		//marker.addTo(map);
+		
+		map.addLayer(area);
 		groupBounds.push(area);
+		/*
+		
+		label = new L.Label()();
+		label.setContent(_data[i].wardID)
+		label.setLatLng(area.getBounds().getCenter())
+		map.showLabel(label);
+		*/
+		
 		
 	}
 	var group = new L.featureGroup(groupBounds);
@@ -79,7 +105,7 @@ function getWardDetailsMap(){
 			mapm.addLayer(osmm);
 			
 			var aream = new L.GeoJSON(data.geojson);
-			console.log(aream)
+			//console.log(aream)
 			mapm.addLayer(aream);
 			mapm.fitBounds(aream.getBounds());
 			if (data.VotingStation){

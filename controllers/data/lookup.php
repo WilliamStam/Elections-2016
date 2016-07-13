@@ -29,7 +29,8 @@ class lookup extends _ {
 		$data = models\ward::getInstance()->get($key);
 		$lookup_key = "MDB:".$key;
 		$url = "http://mapit.code4sa.org/{$lookup_type}/{$lookup_key}.geojson?simplify_tolerance=0.0001&generation=2";
-		//	test_array($return); 
+		
+		//test_array($url); 
 		
 		//test_array($check); 
 		
@@ -61,6 +62,7 @@ class lookup extends _ {
 			
 				if ($r && $r['code'] !='404'){
 					$values = array(
+							"parentID"=>$key,
 							"wardID"=>$key,
 							"data"=>($return)
 					);

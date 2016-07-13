@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1ab9623784d77c031cb6555d5e1a2a2a",
-    "content-hash": "dd5ef54991062673b7c4fac1e3a20e6f",
+    "hash": "38a86b2c12162b7de1d2ae8fc31fd5a5",
+    "content-hash": "c7bb4f72ed8ab4602d94b50d8c56071b",
     "packages": [
         {
             "name": "bcosca/fatfree",
@@ -89,6 +89,28 @@
             },
             "type": "library",
             "time": "2016-03-29 12:08:16"
+        },
+        {
+            "name": "components/Leaflet",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Leaflet/Leaflet",
+                "reference": "origin/master"
+            },
+            "type": "library",
+            "time": "2016-07-11 10:00:15"
+        },
+        {
+            "name": "components/Leaflet_label",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Leaflet/Leaflet.label",
+                "reference": "origin/master"
+            },
+            "type": "library",
+            "time": "2016-06-28 22:45:21"
         },
         {
             "name": "components/TouchSwipe-Jquery-Plugin",
@@ -307,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/components/jqueryui.git",
-                "reference": "51d123ace890e283c7a6471c14ac14ad34ba988b"
+                "reference": "99c8c1a282ab15093cd7391aa22fe39727cbb803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/components/jqueryui/zipball/51d123ace890e283c7a6471c14ac14ad34ba988b",
-                "reference": "51d123ace890e283c7a6471c14ac14ad34ba988b",
+                "url": "https://api.github.com/repos/components/jqueryui/zipball/99c8c1a282ab15093cd7391aa22fe39727cbb803",
+                "reference": "99c8c1a282ab15093cd7391aa22fe39727cbb803",
                 "shasum": ""
             },
             "require": {
@@ -465,45 +487,6 @@
             },
             "type": "library",
             "time": "2015-08-16 12:13:50"
-        },
-        {
-            "name": "drmonty/leaflet",
-            "version": "0.7.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mrohnstock/leaflet.git",
-                "reference": "eda8011e743b8abbfc32624c1c1b1ce3d0e98e50"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mrohnstock/leaflet/zipball/eda8011e743b8abbfc32624c1c1b1ce3d0e98e50",
-                "reference": "eda8011e743b8abbfc32624c1c1b1ce3d0e98e50",
-                "shasum": ""
-            },
-            "require": {
-                "robloach/component-installer": "*"
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "js/leaflet.js"
-                    ],
-                    "files": [
-                        "js/*.js",
-                        "css/*.css",
-                        "images/*.png"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "JavaScript library for mobile-friendly interactive maps http://leafletjs.com",
-            "homepage": "http://leafletjs.com/",
-            "keywords": [
-                "gis",
-                "map"
-            ],
-            "time": "2015-10-26 10:10:37"
         },
         {
             "name": "ivaynberg/select2",
@@ -883,7 +866,9 @@
         "components/touchswipe-jquery-plugin": 20,
         "components/daterangepicker": 20,
         "components/hideseek": 20,
-        "components/toastr": 20
+        "components/toastr": 20,
+        "components/leaflet": 20,
+        "components/leaflet_label": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

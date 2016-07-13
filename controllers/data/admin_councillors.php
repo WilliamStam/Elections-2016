@@ -27,7 +27,7 @@ class admin_councillors extends _ {
 		
 		$where = "1";
 		if ($search){
-			$where .= " AND (fullname LIKE '%$search%' OR parties.party LIKE '%$search%')";
+			$where .= " AND (fullname LIKE '%$search%' OR parties.party LIKE '%$search%' OR IDNumber LIKE '%$search%')";
 		}
 		
 		
