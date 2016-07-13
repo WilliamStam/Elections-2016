@@ -98,6 +98,21 @@ $(document).ready(function () {
 		$.bbq.pushState({"IDNumber": ""});
 		getIDNumberDetails()
 	});
+	$(document).on("click", ".candidate-text .read-more", function (e) {
+		e.preventDefault();
+		var $textBlocks = $(this).closest(".candidate-text")
+		$textBlocks.find(".text-blocks").hide(400)
+		$textBlocks.find(".bio").show(400)
+	});
+	
+	$(document).on("click", ".candidate-text .read-less", function (e) {
+		e.preventDefault();
+		var $textBlocks = $(this).closest(".candidate-text")
+		$textBlocks.find(".text-blocks").hide(400)
+		$textBlocks.find(".synopsis").show(400)
+		
+		
+	});
 	
 });
 function menucalcs() {

@@ -278,7 +278,7 @@
 <script type="text/x-jqote-template" id="template-councillors-list">
 	<![CDATA[
 	
-	<a href="#" class="councillors-list-item">
+	<div class="councillors-list-item">
 		<div class="media">
 			<div class="media-left" style=" position: relative;">
 				
@@ -312,13 +312,24 @@
 					<%= this.party %></div>
 				
 				
-				<div style="margin-top:5px;"><%= this.synopsis||'' %></div>
+				<div style="margin-top:5px;" class="candidate-text">
+					<div class="synopsis text-blocks">
+						<%= this.synopsis||'' %>
+						<% if(this.bio){ %>
+						<a href="#" class="read-more">Read More >></a>
+						<% } %>
+					</div>
+					<div class="bio text-blocks">
+						<%= this.bio||'' %>
+						<a href="#" class="read-less"><< Less</a>
+					</div>
+					</div>
 			
 			</div>
 			<div class="clearfix"></div>
 		</div>
 		<div class="clearfix"></div>
-	</a>
+	</div>
 	<div class="clearfix"></div>
 	]]>
 </script>
