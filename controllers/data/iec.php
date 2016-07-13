@@ -73,7 +73,7 @@ class iec extends _ {
 				
 				$ward = \controllers\data\lookup::getInstance()->ward($point['Ward']['codes']['MDB'],true);
 				$result['geojson'] = $point['Ward']['geojson'];
-				$result['councillors'] = models\councilor::format(models\councilor::getInstance()->getAll("wID='{$point['Ward']['codes']['MDB']}'","fullname ASC"));
+				$result['councillors'] = models\councilor::format(models\councilor::getInstance()->getAll("wID='{$point['Ward']['codes']['MDB']}'","party ASC"));
 				
 				$result['code']=200;
 				$result['geojson']=($ward['data']);
