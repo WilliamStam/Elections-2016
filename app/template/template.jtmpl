@@ -281,9 +281,10 @@
 	<a href="#" class="councillors-list-item">
 		<div class="media">
 			<div class="media-left" style=" position: relative;">
-				<div style="position: relative; z-index:1;">
+				
+				<div style="position: relative; z-index:1; width:100px;">
 					<% if (this.photo && this.photo!='null'){ %>
-					<div class="media-object">
+					<div class="media-object text-center">
 						<img src='/image/100/100/councilor/<%= this.photo %>'/>
 					</div>
 					
