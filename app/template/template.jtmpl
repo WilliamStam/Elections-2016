@@ -280,22 +280,35 @@
 	
 	<a href="#" class="councillors-list-item">
 		<div class="media">
-			<div class="media-left">
-				
-				<% if (this.photo && this.photo!='null'){ %>
-				<img src='/image/100/100/councilor/<%= this.photo %>' class="media-object" />
-				<% } else { %>
-				<div style="height:100px; width:100px; background: #f1f1f1" class="media-object no-thumbnail">
-					<img src='/app/_images/default_thumbnail.jpeg' style="height:100px; width:100px; opacity:0.6;" class="media-object" />
+			<div class="media-left" style=" position: relative;">
+				<div style="position: relative; z-index:1;">
+					<% if (this.photo && this.photo!='null'){ %>
+					<div class="media-object">
+						<img src='/image/100/100/councilor/<%= this.photo %>'/>
+					</div>
+					
+					<% } else { %>
+					<div class="media-object">
+						<img src='/app/_images/default_thumbnail.jpeg' style="height:100px; width:100px; opacity:0.6;" />
+					</div>
+					<% } %>
 				</div>
-				<% } %>
-			
+				
+				
 			
 			
 			</div>
 			<div class="media-body">
-				<h4 class="media-heading"><%= this.fullname %></h4>
-				<div class="sub"><%= this.party %></div>
+				<h4 class="media-heading"><%= this.fullname %> <% if(this.age){ %><small class="pull-right">(age: <%= this.age %>)</small><% } %>
+				</h4>
+				<div class="sub">
+					<% if(this.party_logo) { %>
+					<span class="pull-left" style="margin-right:7px;">
+						<img src='/image/20/20/party/<%= this.party_logo %>' class="media-object" />
+					</span>
+					<% } %>
+					
+					<%= this.party %></div>
 				<%= this.synopsis||'' %>
 			</div>
 			<div class="clearfix"></div>

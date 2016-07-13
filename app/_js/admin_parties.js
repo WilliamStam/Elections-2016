@@ -4,6 +4,12 @@ $(document).ready(function () {
 	
 	getData()
 	
+	$(document).on("click", ".pagination a", function (e) {
+		e.preventDefault();
+		var $this = $(this).parent();
+		$.bbq.pushState({"page": $this.attr("data-page")});
+		getData();
+	});
 	$(document).on("submit", "#filter-form", function (e) {
 		e.preventDefault();
 		

@@ -68,7 +68,7 @@ class councilor extends _ {
 
 
 		$result = $f3->get("DB")->exec("
-			 SELECT DISTINCT *, councillors.ID as ID, GROUP_CONCAT(DISTINCT wID SEPARATOR ', ') as wards
+			 SELECT DISTINCT councillors.*, parties.party, parties.party_logo, GROUP_CONCAT(DISTINCT wID SEPARATOR ', ') as wards
 			FROM (councillors INNER JOIN parties ON councillors.partyID = parties.ID) LEFT JOIN councillors_wards ON councillors.ID = councillors_wards.cID
 			$where
 			GROUP BY councillors.ID
@@ -172,6 +172,22 @@ class councilor extends _ {
 		$i = 1;
 		$n = array();
 		foreach ($data as $item) {
+			$idnum = $item['IDNumber'];
+			if ($idnum){
+				$bday = str_split(substr($idnum,0,6),2);
+				
+				$bday[0] = "19".$bday[0];
+				$bday = implode("-",$bday);
+				
+				$date = new \DateTime($bday);
+				$now = new \DateTime();
+				$interval = $now->diff($date);
+				$item['age'] =  $interval->y;
+				
+				
+				$item['birth_day'] = $bday;
+			}
+			
 			
 			
 			$n[] = $item;
