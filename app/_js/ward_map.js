@@ -57,7 +57,7 @@ function map(){
 		"c01":"#87ceeb",
 		"c02":"#808eeb",
 		"c03":"#9768eb",
-		"c04":"#eb8ae9",
+		"c04":"#a6eb97",
 		"c05":	"#eb9f5e",
 		"c06":"#dceb6a"
 	}
