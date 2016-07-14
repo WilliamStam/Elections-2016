@@ -55,11 +55,11 @@ function map(){
 	
 	var colours = {
 		"c01":"#87ceeb",
-		"c02":"#87aceb",
-		"c03":"#878beb",
-		"c04":"#a487eb",
-		"c05":	"#c587eb",
-		"c06":"#e687eb"
+		"c02":"#808eeb",
+		"c03":"#9768eb",
+		"c04":"#eb8ae9",
+		"c05":	"#eb9f5e",
+		"c06":"#dceb6a"
 	}
 	var defaultStyle = {
 		weight: 2,
@@ -93,7 +93,7 @@ function map(){
 				layer.on('mouseover', function(e) {
 					layer.setStyle(highlightStyle);
 					
-					console.log(e)
+				//	console.log(e)
 					
 				});
 				layer.on('mouseout', function(e) {
