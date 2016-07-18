@@ -3,6 +3,7 @@
 	<tr>
 		<th>Name</th>
 		<th>ID Number</th>
+		<th>Party</th>
 		<th>Wards</th>
 		<th>Photo</th>
 		<th>synopsis</th>
@@ -14,6 +15,7 @@
 	<tr {% if row['photo'] and row['synopsis'] and row['bio'] %}class="success"{% endif %}>
 		<td>{{ row['fullname'] }}</td>
 		<td>{{ row['IDNumber'] }}</td>
+		<td>{{ row['party'] }}</td>
 		<td style="font-size: 9px;">{{ row['wards'] }}</td>
 		<td>{% if row['photo'] %} <i class="fa fa-check"></i>{% endif %} </td>
 		<td>{% if row['synopsis'] %} <i class="fa fa-check"></i>{% endif %} </td>
