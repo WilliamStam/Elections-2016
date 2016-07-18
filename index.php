@@ -443,7 +443,21 @@ $f3->route("GET|POST /keepalive", function ($app, $params) {
 
 
 $f3->route("GET|POST /list", function ($f3, $params) {
-	$data = \models\councilor::getInstance()->getAll("","fullname ASC");
+	
+	$data = $f3->get("DB")->exec("
+			 SELECT councillors.*, parties.party, parties.party_logo, councillors_wards.wID as ward
+			
+			FROM parties INNER JOIN (councillors INNER JOIN councillors_wards ON councillors.ID = councillors_wards.cID) ON parties.ID = councillors.partyID
+			
+			WHERE 1
+			
+			ORDER BY councillors_wards.wID ASC, fullname ASC
+			
+		"
+	);
+	
+	
+	
 	
 	$tmpl = new \template("template.twig");
 	$tmpl->page = array(

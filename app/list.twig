@@ -4,19 +4,27 @@
 		<th>Name</th>
 		<th>ID Number</th>
 		<th>Party</th>
-		<th>Wards</th>
+		<th>Ward</th>
 		<th>Photo</th>
 		<th>synopsis</th>
 		<th>bio</th>
 	</tr>
 	</thead>
 	<tbody>
+	{% set last = "" %}
 	{% for row in data %}
+	{% if row['ward']!=last %}
+	<tr>
+		<th colspan="7" class="info">Ward: {{ row['ward'] }}</th>
+	</tr>	
+	{% endif %}
+		{% set last = row['ward'] %}
+		
 	<tr {% if row['photo'] and row['synopsis'] and row['bio'] %}class="success"{% endif %}>
 		<td>{{ row['fullname'] }}</td>
 		<td>{{ row['IDNumber'] }}</td>
 		<td>{{ row['party'] }}</td>
-		<td style="font-size: 9px;">{{ row['wards'] }}</td>
+		<td style="font-size: 10px;">{{ row['ward'] }}</td>
 		<td>{% if row['photo'] %} <i class="fa fa-picture-o"></i>{% endif %} </td>
 		<td>{% if row['synopsis'] %} <i class="fa fa-circle-thin"></i>{% endif %} </td>
 		<td>{% if row['bio'] %} <i class="fa fa-circle"></i>{% endif %} </td>
