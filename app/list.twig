@@ -1,4 +1,20 @@
-<table class="table">
+<h1>Stats</h1>
+<table class="table table-bordered text-center">
+	<tr>
+		<td>{{ stats['all'] }}</td>
+		<td>{{ stats['photos'] }} <i class="fa fa-picture-o"></i></td>
+		<td>{{ stats['synopsis'] }} <i class="fa fa-circle-thin"></i></td>
+		<td>{{ stats['bio'] }} <i class="fa fa-circle"></i></td>
+		<td class="success">{{ stats['complete'] }} <i class="fa fa-check"></i></td>
+	</tr>
+</table>
+<div class="progress">
+	<div class="progress-bar" role="progressbar" aria-valuenow="{{ stats['percent'] }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ stats['percent'] }}%;">
+		<span class="sr-only">{{ stats['percent'] }}% Complete</span>
+	</div>
+</div>
+<h1>List</h1>
+<table class="table table-condensed">
 	<thead>
 	<tr>
 		<th>Name</th>
@@ -15,7 +31,7 @@
 	{% for row in data %}
 	{% if row['ward']!=last %}
 	<tr>
-		<th colspan="7" class="{% if row['ward_data']=='1' %}info{% else %}danger{% endif %}">Ward: {{ row['ward'] }} - {{ row['ward_data'] }}</th>
+		<th colspan="7" class="{% if row['ward_data']=='1' %}info{% else %}danger{% endif %}">Ward: {{ row['ward'] }} {% if row['ward_data']=='1' %} <i class="fa fa-check"></i>{% endif %}</th>
 	</tr>	
 	{% endif %}
 		{% set last = row['ward'] %}

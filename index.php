@@ -458,6 +458,13 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 	$includeMunci = array("01","03","04","05");
 	$d = array();
 	$m = array();
+	$cA = array();
+	$cP = array();
+	$cS = array();
+	$cB = array();
+	$cCompl = array();
+	
+	
 	foreach ($data as $item){
 		$loc = substr($item['ward'],3,2);
 		if (!in_array($loc,$m)){
@@ -466,10 +473,60 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 		
 		$item['munci'] = $loc;
 		//test_array($loc); 
-		if (in_array($loc,$includeMunci)) $d[] = $item;
+		if (in_array($loc,$includeMunci)) {
+			
+			if (!in_array($item['ID'],$cA)){
+				$cA[] = $item['ID'];
+			}
+			if (!in_array($item['ID'],$cP)){
+				if ($item['photo']){
+					$cP[] = $item['ID'];
+				}
+			}
+			
+			if (!in_array($item['ID'],$cS)){
+				if ($item['synopsis']){
+					$cS[] = $item['ID'];
+				}
+			}
+			
+			if (!in_array($item['ID'],$cB)){
+				if ($item['bio']){
+					$cB[] = $item['ID'];
+				}
+			}
+			
+			if (!in_array($item['ID'],$cCompl)){
+				if ($item['bio']&&$item['synopsis']&&$item['photo']){
+					$cCompl[] = $item['ID'];
+				}
+			}
+			
+			
+			
+			$d[] = $item;
+		}
 	}
 	$data = $d;
-	//test_array($m); 
+	
+	$stats = array(
+			"all"=>count($cA),
+			"photos"=>count($cP),
+			"synopsis"=>count($cS),
+			"bio"=>count($cB),
+			"complete"=>count($cCompl),
+			"percent"=>0
+			
+	);
+	
+	if ($stats['complete'] > 0 && $stats['all'] > 0){
+		$stats['percent'] = ($stats['complete'] / $stats['all'] ) * 100;
+	}
+	
+	
+	
+	
+	//test_array($stats); 
 	
 	$tmpl = new \template("template.twig");
 	$tmpl->page = array(
@@ -481,6 +538,7 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 			),
 	);
 	
+	$tmpl->stats = $stats;
 	$tmpl->data = $data;
 	$tmpl->output();
 	
