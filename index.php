@@ -445,9 +445,9 @@ $f3->route("GET|POST /keepalive", function ($app, $params) {
 $f3->route("GET|POST /list", function ($f3, $params) {
 	
 	$data = $f3->get("DB")->exec("
-			 SELECT councillors.*, parties.party, parties.party_logo, councillors_wards.wID as ward
+			 SELECT councillors.*, parties.party, parties.party_logo, councillors_wards.wID as ward, if(wards.data is not null,1,0) as ward_data
 			
-			FROM parties INNER JOIN (councillors INNER JOIN councillors_wards ON councillors.ID = councillors_wards.cID) ON parties.ID = councillors.partyID
+			FROM (parties INNER JOIN (councillors INNER JOIN councillors_wards ON councillors.ID = councillors_wards.cID) ON parties.ID = councillors.partyID) LEFT JOIN wards ON councillors_wards.wID = wards.wardID
 			
 			WHERE 1
 			

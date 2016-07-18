@@ -15,7 +15,7 @@
 	{% for row in data %}
 	{% if row['ward']!=last %}
 	<tr>
-		<th colspan="7" class="info">Ward: {{ row['ward'] }}</th>
+		<th colspan="7" class="{% if row['ward_data']=='1' %}info{% else %}danger{% endif %}">Ward: {{ row['ward'] }} - {{ row['ward_data'] }}</th>
 	</tr>	
 	{% endif %}
 		{% set last = row['ward'] %}
