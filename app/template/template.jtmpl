@@ -79,6 +79,11 @@
 			</div>
 			<div class="modal-body" style="position: relative;">
 				
+				<div class="alert alert-info">
+					<p class="text-center">To find out where your voting station is use one of these options: <br><a href="#" class="address-lookup-btn">Address lookup</a> 
+						or <a href="#" class="status-lookup-btn">ID number status</a>
+					</p>
+				</div>
 				
 				
 				<h4 style="margin-bottom:20px;">Candidates:</h4>

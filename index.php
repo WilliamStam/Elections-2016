@@ -442,9 +442,30 @@ $f3->route("GET|POST /keepalive", function ($app, $params) {
 
 
 
-
-
 $f3->route("GET|POST /list", function ($f3, $params) {
+	$data = \models\councilor::getInstance()->getAll("","");
+	
+	$tmpl = new \template("template.twig");
+	$tmpl->page = array(
+			"section"    => "list",
+			"sub_section"=> "list",
+			"template"   => "list",
+			"meta"       => array(
+					"title"=> "Elections 2016",
+			),
+	);
+	
+	$tmpl->data = $data;
+	$tmpl->output();
+	
+	
+});
+
+
+
+
+
+$f3->route("GET|POST /import", function ($f3, $params) {
 	ini_set('max_execution_time', 300);
 	
 	
