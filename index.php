@@ -443,7 +443,7 @@ $f3->route("GET|POST /keepalive", function ($app, $params) {
 
 
 $f3->route("GET|POST /list", function ($f3, $params) {
-	$data = \models\councilor::getInstance()->getAll("","");
+	$data = \models\councilor::getInstance()->getAll("","fullname ASC");
 	
 	$tmpl = new \template("template.twig");
 	$tmpl->page = array(
