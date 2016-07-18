@@ -456,8 +456,20 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 		"
 	);
 	
-	
-	
+	$d = array();
+	$m = array();
+	foreach ($data as $item){
+		$loc = substr($item['ward'],3,2);
+		if (!in_array($loc,$m)){
+			$m[] = $loc;
+		}
+		
+		$item['munci'] = $loc;
+		//test_array($loc); 
+		$d[] = $item;
+	}
+	$data = $d;
+	//test_array($m); 
 	
 	$tmpl = new \template("template.twig");
 	$tmpl->page = array(
