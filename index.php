@@ -455,7 +455,7 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 			
 		"
 	);
-	
+	$includeMunci = array("01","03","04","05");
 	$d = array();
 	$m = array();
 	foreach ($data as $item){
@@ -466,7 +466,7 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 		
 		$item['munci'] = $loc;
 		//test_array($loc); 
-		$d[] = $item;
+		if (in_array($loc,$includeMunci)) $d[] = $item;
 	}
 	$data = $d;
 	//test_array($m); 
