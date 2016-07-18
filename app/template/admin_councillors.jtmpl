@@ -2,7 +2,7 @@
 	<![CDATA[
 	
 	<% for (var i in this.records){ %>
-	<tr class="record <% if(this.details.ID==this.records[i].ID){ %>active<% } %>" data-id="<%= this.records[i].ID %>">
+	<tr class="record <% if(this.details.ID==this.records[i].ID){ %>active<% } %> <% if(this.records[i].photo &&this.records[i].synopsis &&this.records[i].bio){ %>success<% } %>" data-id="<%= this.records[i].ID %>">
 		<td>
 			<%= this.records[i].fullname %>
 		</td>
