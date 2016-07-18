@@ -445,7 +445,7 @@ $f3->route("GET|POST /keepalive", function ($app, $params) {
 $f3->route("GET|POST /list", function ($f3, $params) {
 	
 	$data = $f3->get("DB")->exec("
-			 SELECT councillors.*, parties.party, parties.party_logo, councillors_wards.wID as ward, if(wards.data is not null,1,0) as ward_data
+			 SELECT councillors.*, parties.party, parties.party_logo, councillors_wards.wID as ward, if(wards.data is not null,1,0) as ward_data, councillors.ID as ID
 			
 			FROM (parties INNER JOIN (councillors INNER JOIN councillors_wards ON councillors.ID = councillors_wards.cID) ON parties.ID = councillors.partyID) LEFT JOIN wards ON councillors_wards.wID = wards.wardID
 			
@@ -479,25 +479,25 @@ $f3->route("GET|POST /list", function ($f3, $params) {
 				$cA[] = $item['ID'];
 			}
 			if (!in_array($item['ID'],$cP)){
-				if ($item['photo']){
+				if ($item['photo'] != ""){
 					$cP[] = $item['ID'];
 				}
 			}
 			
 			if (!in_array($item['ID'],$cS)){
-				if ($item['synopsis']){
+				if ($item['synopsis'] != ""){
 					$cS[] = $item['ID'];
 				}
 			}
 			
 			if (!in_array($item['ID'],$cB)){
-				if ($item['bio']){
+				if ($item['bio'] != ""){
 					$cB[] = $item['ID'];
 				}
 			}
 			
 			if (!in_array($item['ID'],$cCompl)){
-				if ($item['bio']&&$item['synopsis']&&$item['photo']){
+				if ($item['bio'] != ""&&$item['synopsis'] != ""&&$item['photo'] != ""){
 					$cCompl[] = $item['ID'];
 				}
 			}
