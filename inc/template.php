@@ -59,6 +59,8 @@ class template {
 		$this->vars['_folder'] = $this->vars['folder'];
 
 		$this->vars['_domain'] = "//".$_SERVER['HTTP_HOST'];
+		$this->vars['_domain_raw'] = $_SERVER['HTTP_HOST'];
+		$this->vars['_url'] = $curPageFull;
 
 
 		
@@ -69,6 +71,7 @@ class template {
 
 
 
+	//	test_array($this->vars); 
 		
 
 	}
